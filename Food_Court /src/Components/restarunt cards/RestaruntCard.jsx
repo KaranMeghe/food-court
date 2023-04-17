@@ -25,20 +25,17 @@ const RestaruntCard = ({
 
         <div
           className="d-flex justify-content-between"
-          style={{ fontSize: "12px", height: "20%" }}
+          style={{ fontSize: "12px", height: "18%" }}
         >
           {avgRating >= 4 ? (
-            <div
-              className="d-flex justify-content-center align-items-baseline bg-success text-white  p-2"
-              style={{}}
-            >
+            <div className="d-flex justify-content-center align-items-baseline bg-success text-white  p-2">
               <BsFillStarFill />
-              <p>{avgRating}</p>
+              <p>&nbsp; {avgRating}</p>
             </div>
           ) : (
             <div className="d-flex justify-content-center align-items-baseline bg-warning text-white  p-2">
               <BsFillStarFill />
-              <p>{avgRating}</p>
+              <p>&nbsp; {avgRating}</p>
             </div>
           )}
 

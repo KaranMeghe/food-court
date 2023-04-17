@@ -39,10 +39,6 @@ const Body = () => {
           />
           <button
             className="btn btn-outline-secondary"
-            // onClick={() => {
-            //   const data = filterRestarunt(searchInput, restarants);
-            //   setRestarants(data);
-            // }}
             onClick={() => {
               if (searchInput !== "") {
                 const data = filterRestarunt(searchInput, restarantList);

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FETCH_RESTARUNTS } from "../../config";
 import RestaruntCard from "../restarunt cards/RestaruntCard";
 import axios from "axios";
+import { ShimmerPostList } from "react-shimmer-effects-18";
 
 const Body = () => {
   const [restarants, setRestarants] = useState([]);
@@ -38,7 +39,11 @@ const Body = () => {
     return filterRestaruntName;
   };
 
-  return (
+  return restarants.length === 0 ? (
+    <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
+      <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
+    </div>
+  ) : (
     <main>
       <div className="container-fluid d-flex justify-content-center">
         <form className="d-flex w-50 m-3" onSubmit={handleForm}>
@@ -65,7 +70,7 @@ const Body = () => {
           </button>
         </form>
       </div>
-      <div className="restaruntList d-flex flex-wrap justify-content-around">
+      <div className="restaruntList d-flex flex-wrap justify-content-center">
         {restarants.map((restarant) => {
           return (
             <RestaruntCard

@@ -1,11 +1,24 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from "react";
-import { restarantList } from "../../config";
+import { useState, useEffect } from "react";
+import { FETCH_RESTARUNTS } from "../../config";
 import RestaruntCard from "../restarunt cards/RestaruntCard";
+import axios from "axios";
 
 const Body = () => {
-  const [restarants, setRestarants] = useState(restarantList);
+  const [restarants, setRestarants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    // Api Call
+    getRestarunts();
+  }, []);
+
+  const getRestarunts = async () => {
+    const data = await axios.get(FETCH_RESTARUNTS);
+    console.log(data);
+    setRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
+    return restarants;
+  };
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -41,10 +54,10 @@ const Body = () => {
             className="btn btn-outline-secondary"
             onClick={() => {
               if (searchInput !== "") {
-                const data = filterRestarunt(searchInput, restarantList);
+                const data = filterRestarunt(searchInput, restarants);
                 setRestarants(data);
               } else {
-                setRestarants(restarantList);
+                setRestarants(restarants);
               }
             }}
           >

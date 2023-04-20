@@ -6,7 +6,8 @@ import axios from "axios";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 
 const Body = () => {
-  const [restarants, setRestarants] = useState([]);
+  const [allRestarants, setAllRestarants] = useState([]);
+  const [filteredRestarants, setFilteredRestarants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -17,8 +18,8 @@ const Body = () => {
   const getRestarunts = async () => {
     const data = await axios.get(FETCH_RESTARUNTS);
     console.log(data);
-    setRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
-    return restarants;
+    setAllRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
   };
 
   const handleForm = (e) => {
@@ -39,7 +40,13 @@ const Body = () => {
     return filterRestaruntName;
   };
 
-  return restarants.length === 0 ? (
+  //   early return
+  if (!allRestarants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
+
+  if (filterRestarunt?.length === 0)
+    return <h1>No Restarunt found, Check again.</h1>;
+
+  return allRestarants.length === 0 ? (
     <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
       <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
     </div>
@@ -59,10 +66,10 @@ const Body = () => {
             className="btn btn-outline-secondary"
             onClick={() => {
               if (searchInput !== "") {
-                const data = filterRestarunt(searchInput, restarants);
-                setRestarants(data);
+                const data = filterRestarunt(searchInput, allRestarants);
+                setFilteredRestarants(data);
               } else {
-                setRestarants(restarants);
+                setAllRestarants(allRestarants);
               }
             }}
           >
@@ -71,7 +78,7 @@ const Body = () => {
         </form>
       </div>
       <div className="restaruntList d-flex flex-wrap justify-content-center">
-        {restarants.map((restarant) => {
+        {filteredRestarants.map((restarant) => {
           return (
             <RestaruntCard
               {...restarant.data}

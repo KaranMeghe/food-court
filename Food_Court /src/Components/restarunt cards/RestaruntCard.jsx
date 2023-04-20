@@ -13,7 +13,7 @@ const RestaruntCard = ({
   costForTwoString,
 }) => {
   return (
-    <div className="card m-2" style={{ width: "18rem" }}>
+    <div className="card mx-2 my-5" style={{ width: "18rem" }}>
       <img
         src={IMG_CDN_URL + cloudinaryImageId}
         className="card-img-top"
@@ -25,10 +25,10 @@ const RestaruntCard = ({
 
         <div
           className="d-flex justify-content-between"
-          style={{ fontSize: "12px", height: "18%" }}
+          style={{ fontSize: "12px", maxHeight: "18%" }}
         >
           {avgRating >= 4 ? (
-            <div className="d-flex justify-content-center align-items-baseline bg-success text-white  p-2">
+            <div className="d-flex justify-content-center align-items-baseline bg-success text-white p-2">
               <BsFillStarFill />
               <p>&nbsp; {avgRating}</p>
             </div>

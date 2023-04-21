@@ -1,6 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { useState } from "react";
 const Navbar = () => {
+  const [isLogin, setIsLogin] = useState("🟢 Log-in");
+
+  const userAuthentication = () => {
+    return isLogin === "🟢 Log-in"
+      ? setIsLogin("🔴 Log-out")
+      : setIsLogin("🟢 Log-in");
+  };
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm">
@@ -30,6 +39,12 @@ const Navbar = () => {
             <li className="nav-items">
               <a className="nav-link">
                 <BsFillCartPlusFill className="fs-4" />
+              </a>
+            </li>
+
+            <li className="nav-items">
+              <a className="nav-link" onClick={userAuthentication}>
+                {isLogin}
               </a>
             </li>
           </ul>

@@ -40,11 +40,23 @@ const Body = () => {
     return filterRestaruntName;
   };
 
-  //   early return
+  // Early Return
   if (!allRestarants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
 
-  if (filterRestarunt?.length === 0)
-    return <h1>No Restarunt found, Check again.</h1>;
+  //   function notValidSearch() {
+  //     if (searchInput.length && filteredRestarants.length === 0) {
+  //       const errorMsg = `Enter valid Search ${searchInput} not found`;
+  //       return errorMsg;
+  //     }
+  //   }
+
+  function notValidSearch() {
+    if (searchInput.length && filteredRestarants.length === 0) {
+      // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
+      let errorMsg = `Enter Valid Search: ${searchInput} is not found`;
+      return errorMsg;
+    }
+  }
 
   return allRestarants.length === 0 ? (
     <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
@@ -68,25 +80,26 @@ const Body = () => {
               if (searchInput !== "") {
                 const data = filterRestarunt(searchInput, allRestarants);
                 setFilteredRestarants(data);
-              } else {
-                setAllRestarants(allRestarants);
               }
             }}
           >
             Search
           </button>
         </form>
+        <p className="p-2 text-danger">{notValidSearch()}</p>
       </div>
+
       <div className="restaruntList d-flex flex-wrap justify-content-center">
-        {filteredRestarants.map((restarant) => {
-          return (
-            <RestaruntCard
-              {...restarant.data}
-              key={restarant.data.id}
-              className="d-flex"
-            />
-          );
-        })}
+        {filteredRestarants &&
+          filteredRestarants.map((restarant) => {
+            return (
+              <RestaruntCard
+                {...restarant.data}
+                key={restarant.data.id}
+                className="d-flex"
+              />
+            );
+          })}
       </div>
     </main>
   );

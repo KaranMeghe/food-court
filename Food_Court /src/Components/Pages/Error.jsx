@@ -8,7 +8,10 @@ const Error = () => {
   console.log(error);
   console.log(error);
   return (
-    <div className="d-flex align-items-center justify-content-center flex-column my-auto text-secondary text-center py-5">
+    <div
+      className="d-flex align-items-center justify-content-center flex-column text-secondary text-center"
+      style={{ height: "100vh" }}
+    >
       <div className="errorMsg-container ">
         <h1 className="text-secondary">Opps!! Something Went Wrong.</h1>
         <h3>

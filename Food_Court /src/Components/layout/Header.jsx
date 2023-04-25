@@ -16,8 +16,8 @@ const Navbar = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm">
         <div className="logo">
-          <Link to="/">
-            <h1 className="navbar-brand">FOOD COURT</h1>
+          <Link to="/" className="text-decoration-none">
+            <h1 className="navbar-brand ">FOOD COURT</h1>
           </Link>
         </div>
 

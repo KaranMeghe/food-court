@@ -17,7 +17,7 @@ const Navbar = () => {
           <h1 className="navbar-brand">FOOD COURT</h1>
         </div>
 
-        <div id="navbarSupportedContent">
+        <div id="navbarSupportedContent" className="w-25">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">

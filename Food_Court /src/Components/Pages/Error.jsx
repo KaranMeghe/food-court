@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import imageError from "../../assets/images/error.jpg";
-import { useRouteError } from "react-router-dom";
+import { useRouteError, Link } from "react-router-dom";
 
 const Error = () => {
   const error = useRouteError();
@@ -21,7 +21,9 @@ const Error = () => {
       </div>
 
       <img src={imageError} className="w-50 shadow-lg my-3" />
-      <button className="px-5 py-1 btn btn-secondary">Go Home</button>
+      <Link to="/">
+        <button className="my-2 px-5 py-2 btn btn-secondary">Go Home</button>
+      </Link>
     </div>
   );
 };

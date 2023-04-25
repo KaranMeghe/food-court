@@ -1,6 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
+
 const About = () => {
-  return <h1>About us</h1>;
+  return (
+    <div>
+      <h1>About us</h1>
+    </div>
+  );
 };
 
 export default About;

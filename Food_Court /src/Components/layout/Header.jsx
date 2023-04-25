@@ -1,6 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState("🟢 Log-in");
 
@@ -14,38 +16,40 @@ const Navbar = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm">
         <div className="logo">
-          <h1 className="navbar-brand">FOOD COURT</h1>
+          <Link to="/">
+            <h1 className="navbar-brand">FOOD COURT</h1>
+          </Link>
         </div>
 
         <div id="navbarSupportedContent" className="w-25">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/about">
                 About-us
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/contact">
                 Contact
-              </a>
+              </Link>
             </li>
 
             <li className="nav-items">
-              <a className="nav-link">
+              <Link className="nav-link" to="/cart">
                 <BsFillCartPlusFill className="fs-4" />
-              </a>
+              </Link>
             </li>
 
             <li className="nav-items">
-              <a className="nav-link" onClick={userAuthentication}>
+              <Link className="nav-link" onClick={userAuthentication}>
                 {isLogin}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

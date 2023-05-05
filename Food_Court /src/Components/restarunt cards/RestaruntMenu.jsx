@@ -12,16 +12,87 @@ const RestaruntMenu = () => {
   const { restId } = useParams();
 
   const [restaruntInfo, setRestaruntInfo] = useState({});
+  const [restaruntMenu, setRestaruntMenu] = useState({});
+  const [discountInfo, setDiscountInfo] = useState({});
 
+  console.log(restaruntInfo);
   useEffect(() => {
     getRestaruntInfo();
+  }, []);
+
+  useEffect(() => {
+    getRestaruntMenu();
+  }, []);
+
+  useEffect(() => {
+    getDiscountInfo();
   }, []);
 
   const getRestaruntInfo = async () => {
     const restData = await axios.get(FETCH_RESTARUNTS_DETAILS);
     console.log(restData);
-    setRestaruntInfo(restData.data.data.cards[0].card.card.info);
+    setRestaruntInfo(restData?.data?.data?.cards[0]?.card?.card?.info);
     console.log(restaruntInfo);
+  };
+
+  const getDiscountInfo = async () => {
+    const discountInfo = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    setDiscountInfo(
+      discountInfo?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers.map(
+        (offer) => offer.info
+      )
+    );
+  };
+
+  console.log(discountInfo);
+
+  const getRestaruntMenu = async () => {
+    const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    console.log(restCards);
+
+    const restMenuCards =
+      restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards.map(
+        (card) => {
+          return card.card.card.itemCards;
+        }
+      );
+    console.log(restMenuCards);
+
+    const menuCardsList = restMenuCards
+      .filter(Boolean)
+      .flatMap((innerMenuCard) =>
+        innerMenuCard.map((objList) => objList.card.info)
+      );
+    console.log(menuCardsList);
+
+    // setRestaruntMenu(menuCardsList);
+    const menuLists = menuCardsList.map((menuCardsList) => {
+      console.log(menuCardsList);
+      return menuCardsList;
+    });
+    console.log(menuLists);
+    console.log(restaruntMenu);
+
+    setRestaruntMenu(menuLists);
+    console.log(restaruntMenu);
+
+    // const restMenuCard = restMenuListCards.map((cards) => {
+    //   return cards;
+    // });
+    // console.log(restMenuCard);
+
+    // const menuCard = restMenuCard.map((card) => {
+    //   return card;
+    // });
+    // // setRestaruntMenu(...menuCard);
+    // // console.log(...menuCard);
+    // // console.log(restaruntMenu);
+
+    // const menuInfo = menuCard.map((menu) => {
+    //   return setRestaruntMenu(menu);
+    // });
+
+    // console.log(menuInfo);
   };
 
   return (
@@ -72,14 +143,35 @@ const RestaruntMenu = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-center">
-        {restaruntInfo.aggregatedDiscountInfo.descriptionList.map((item) => {
+      <div className="d-flex justify-content-center mx-5">
+        {discountInfo.map((discount) => {
           return (
-            <div key={Math.floor(Math.random() * 1000)} className="w-20 mx-2">
-              <p className="p-1 border">{item.meta}</p>
+            <div
+              key={discount.offerIds}
+              className="m-3 rounded"
+              style={{ width: "17%" }}
+            >
+              <div className="d-flex p-1 border justify-content-center align-items-baseline">
+                <img
+                  src={IMG_CDN_URL + discount.offerLogo}
+                  style={{ width: "8%", height: "10%" }}
+                ></img>
+                <p className="d-flex flex-column align-items-center">
+                  {discount.header}
+                  <span className="text-secondary" style={{ fontSize: "11px" }}>
+                    {discount.couponCode} | {discount.description}
+                  </span>
+                </p>
+              </div>
             </div>
           );
         })}
+      </div>
+
+      <div className="d-flex justify-content-center">
+        <div className="d-flex flex-column">
+          <h3>hii </h3>
+        </div>
       </div>
     </>
   );

@@ -15,7 +15,6 @@ const RestaruntMenu = () => {
   const [restaruntMenu, setRestaruntMenu] = useState({});
   const [discountInfo, setDiscountInfo] = useState({});
 
-  console.log(restaruntInfo);
   useEffect(() => {
     getRestaruntInfo();
   }, []);
@@ -30,25 +29,23 @@ const RestaruntMenu = () => {
 
   const getRestaruntInfo = async () => {
     const restData = await axios.get(FETCH_RESTARUNTS_DETAILS);
-    console.log(restData);
     setRestaruntInfo(restData?.data?.data?.cards[0]?.card?.card?.info);
-    console.log(restaruntInfo);
+    return restaruntInfo;
   };
 
   const getDiscountInfo = async () => {
-    const discountInfo = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    const discountInformation = await axios.get(FETCH_RESTARUNTS_DETAILS);
     setDiscountInfo(
-      discountInfo?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers.map(
+      discountInformation?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers.map(
         (offer) => offer.info
       )
     );
+    console.log(discountInfo);
+    return discountInfo;
   };
-
-  console.log(discountInfo);
 
   const getRestaruntMenu = async () => {
     const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS);
-    console.log(restCards);
 
     const restMenuCards =
       restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards.map(
@@ -56,43 +53,18 @@ const RestaruntMenu = () => {
           return card.card.card.itemCards;
         }
       );
-    console.log(restMenuCards);
 
     const menuCardsList = restMenuCards
       .filter(Boolean)
       .flatMap((innerMenuCard) =>
-        innerMenuCard.map((objList) => objList.card.info)
+        innerMenuCard.map((objList) => {
+          const menuList = objList.card.info;
+          return menuList;
+        })
       );
-    console.log(menuCardsList);
 
-    // setRestaruntMenu(menuCardsList);
-    const menuLists = menuCardsList.map((menuCardsList) => {
-      console.log(menuCardsList);
-      return menuCardsList;
-    });
-    console.log(menuLists);
+    setRestaruntMenu(menuCardsList);
     console.log(restaruntMenu);
-
-    setRestaruntMenu(menuLists);
-    console.log(restaruntMenu);
-
-    // const restMenuCard = restMenuListCards.map((cards) => {
-    //   return cards;
-    // });
-    // console.log(restMenuCard);
-
-    // const menuCard = restMenuCard.map((card) => {
-    //   return card;
-    // });
-    // // setRestaruntMenu(...menuCard);
-    // // console.log(...menuCard);
-    // // console.log(restaruntMenu);
-
-    // const menuInfo = menuCard.map((menu) => {
-    //   return setRestaruntMenu(menu);
-    // });
-
-    // console.log(menuInfo);
   };
 
   return (
@@ -170,7 +142,27 @@ const RestaruntMenu = () => {
 
       <div className="d-flex justify-content-center">
         <div className="d-flex flex-column">
-          <h3>hii </h3>
+          {restaruntMenu.map((menu, index) => {
+            return (
+              <div
+                className="d-flex justify-content-between p-3 my-3 border"
+                id="menuList"
+                key={index}
+              >
+                <div className="d-flex flex-column" id="menu-content">
+                  <h5>{menu.name}</h5>
+                  <p>₹{String(menu.price).slice(0, 3)}</p>
+                  <p className="text-secondary" style={{ fontSize: "12px" }}>
+                    {menu.description}
+                  </p>
+                </div>
+
+                <div className="w-20" id="menuImg">
+                  <img src={IMG_CDN_URL + menu.imageId} className="w-100" />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

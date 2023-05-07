@@ -51,9 +51,9 @@ const Body = () => {
   //   }
 
   function notValidSearch() {
-    if (searchInput.length && filteredRestarants.length === 0) {
+    if (filteredRestarants.length === 0) {
       // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
-      let errorMsg = `Enter Valid Search: ${searchInput} is not found`;
+      let errorMsg = `Oops!! Restaruants or dish not found`;
       return errorMsg;
     }
   }
@@ -86,8 +86,8 @@ const Body = () => {
             Search
           </button>
         </form>
-        <p className="p-2 text-danger">{notValidSearch()}</p>
       </div>
+      <p className="p-2 text-danger text-center">{notValidSearch()}</p>
 
       <div className="restaruntList d-flex flex-wrap justify-content-center">
         {filteredRestarants &&

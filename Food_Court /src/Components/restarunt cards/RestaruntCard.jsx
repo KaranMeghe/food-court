@@ -24,18 +24,18 @@ const RestaruntCard = ({
         <p className="card-text text-secondary">{cuisines.join(" , ")}</p>
 
         <div
-          className="d-flex justify-content-between"
-          style={{ fontSize: "12px", maxHeight: "18%" }}
+          className="d-flex justify-content-between align-items-baseline"
+          style={{ fontSize: "12px" }}
         >
           {avgRating >= 4 ? (
             <div className="d-flex justify-content-center align-items-baseline bg-success text-white p-2">
               <BsFillStarFill />
-              <p>&nbsp; {avgRating}</p>
+              <p className="m-0">&nbsp; {avgRating}</p>
             </div>
           ) : (
             <div className="d-flex justify-content-center align-items-baseline bg-warning text-white  p-2">
               <BsFillStarFill />
-              <p>&nbsp; {avgRating}</p>
+              <p className="m-0">&nbsp; {avgRating}</p>
             </div>
           )}
 

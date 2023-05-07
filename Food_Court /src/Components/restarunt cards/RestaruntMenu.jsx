@@ -115,13 +115,13 @@ const RestaruntMenu = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-center mx-5">
+      <div className="d-flex flex-column flex-sm-column  flex-lg-row align-items-center justify-content-center mx-5">
         {discountInfo.map((discount) => {
           return (
             <div
               key={discount.offerIds}
-              className="m-3 rounded"
-              style={{ width: "17%" }}
+              className="my-3 rounded mx-1 w-100 w-md-20 w-lg-20"
+              style={{}}
             >
               <div className="d-flex p-1 border justify-content-center align-items-baseline">
                 <img
@@ -141,11 +141,11 @@ const RestaruntMenu = () => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column align-items-center">
           {restaruntMenu.map((menu, index) => {
             return (
               <div
-                className="d-flex justify-content-between p-3 my-3 border"
+                className="d-flex justify-content-between p-2 my-3 border w-75"
                 id="menuList"
                 key={index}
               >

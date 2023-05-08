@@ -15,6 +15,9 @@ const RestaruntMenu = () => {
   const [restaruntMenu, setRestaruntMenu] = useState({});
   const [discountInfo, setDiscountInfo] = useState({});
 
+  console.log(restaruntInfo);
+  console.log(restaruntMenu);
+
   useEffect(() => {
     getRestaruntInfo();
   }, []);
@@ -46,6 +49,7 @@ const RestaruntMenu = () => {
 
   const getRestaruntMenu = async () => {
     const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    console.log(restCards);
 
     const restMenuCards =
       restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards.map(
@@ -53,6 +57,7 @@ const RestaruntMenu = () => {
           return card.card.card.itemCards;
         }
       );
+    console.log(restMenuCards);
 
     const menuCardsList = restMenuCards
       .filter(Boolean)
@@ -120,7 +125,7 @@ const RestaruntMenu = () => {
           return (
             <div
               key={discount.offerIds}
-              className="my-3 rounded mx-1 w-100 w-md-20 w-lg-20"
+              className="my-3 rounded mx-1 w-20"
               style={{}}
             >
               <div className="d-flex p-1 border justify-content-center align-items-baseline">

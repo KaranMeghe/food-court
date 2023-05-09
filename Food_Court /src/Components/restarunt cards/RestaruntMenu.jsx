@@ -6,14 +6,15 @@ import axios from "axios";
 import { FETCH_RESTARUNTS_DETAILS, IMG_CDN_URL } from "../../config";
 import { FiChevronDown } from "react-icons/fi";
 import { IoBicycleOutline, IoTimerOutline } from "react-icons/io5";
+import { ShimmerTable } from "react-shimmer-effects-18";
 
 const RestaruntMenu = () => {
   // This is How to Read Dynamic URL Params
   const { restId } = useParams();
 
-  const [restaruntInfo, setRestaruntInfo] = useState({});
-  const [restaruntMenu, setRestaruntMenu] = useState({});
-  const [discountInfo, setDiscountInfo] = useState({});
+  const [restaruntInfo, setRestaruntInfo] = useState(null);
+  const [restaruntMenu, setRestaruntMenu] = useState(null);
+  const [discountInfo, setDiscountInfo] = useState(null);
 
   console.log(restaruntInfo);
   console.log(restaruntMenu);
@@ -70,11 +71,14 @@ const RestaruntMenu = () => {
 
     setRestaruntMenu(menuCardsList);
     console.log(restaruntMenu);
+    return restaruntMenu;
   };
 
-  return (
+  return !restaruntInfo || !restaruntMenu || !discountInfo ? (
+    <ShimmerTable row={14} col={14} />
+  ) : (
     <>
-      <div className="d-flex flex-direction-column align-items-center">
+      <div className="d-flex flex-direction-column align-items-center my-5">
         <div
           id="restaruntInfo"
           className="d-flex justify-content-between py-3"
@@ -150,7 +154,7 @@ const RestaruntMenu = () => {
           {restaruntMenu.map((menu, index) => {
             return (
               <div
-                className="d-flex justify-content-between p-2 my-3 border w-75"
+                className="d-flex justify-content-between p-2 my-3 border rounded w-75"
                 id="menuList"
                 key={index}
               >

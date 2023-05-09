@@ -32,13 +32,15 @@ const RestaruntMenu = () => {
   }, []);
 
   const getRestaruntInfo = async () => {
-    const restData = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    const restData = await axios.get(FETCH_RESTARUNTS_DETAILS + restId);
     setRestaruntInfo(restData?.data?.data?.cards[0]?.card?.card?.info);
     return restaruntInfo;
   };
 
   const getDiscountInfo = async () => {
-    const discountInformation = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    const discountInformation = await axios.get(
+      FETCH_RESTARUNTS_DETAILS + restId
+    );
     setDiscountInfo(
       discountInformation?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers.map(
         (offer) => offer.info
@@ -49,7 +51,7 @@ const RestaruntMenu = () => {
   };
 
   const getRestaruntMenu = async () => {
-    const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS);
+    const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS + restId);
     console.log(restCards);
 
     const restMenuCards =

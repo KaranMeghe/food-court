@@ -4,6 +4,8 @@ import { FETCH_RESTARUNTS } from "../../config";
 import RestaruntCard from "../restarunt cards/RestaruntCard";
 import axios from "axios";
 import { ShimmerPostList } from "react-shimmer-effects-18";
+import { Link } from "react-router-dom";
+// import { Router } from "react-router-dom";
 
 const Body = () => {
   const [allRestarants, setAllRestarants] = useState([]);
@@ -64,7 +66,10 @@ const Body = () => {
     </div>
   ) : (
     <main>
-      <div className="container-fluid d-flex justify-content-center">
+      <div
+        className="container-fluid d-flex justify-content-center"
+        style={{ marginTop: "3%" }}
+      >
         <form className="d-flex w-50 m-3" onSubmit={handleForm}>
           <input
             className="form-control me-2"
@@ -93,11 +98,13 @@ const Body = () => {
         {filteredRestarants &&
           filteredRestarants.map((restarant) => {
             return (
-              <RestaruntCard
-                {...restarant.data}
+              <Link
+                to={"/restarunt/" + restarant.data.id}
                 key={restarant.data.id}
-                className="d-flex"
-              />
+                className="text-decoration-none text-reset"
+              >
+                <RestaruntCard {...restarant.data} className="d-flex" />
+              </Link>
             );
           })}
       </div>

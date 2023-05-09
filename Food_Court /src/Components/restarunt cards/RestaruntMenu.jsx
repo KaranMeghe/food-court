@@ -55,9 +55,9 @@ const RestaruntMenu = () => {
     console.log(restCards);
 
     const restMenuCards =
-      restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards.map(
+      restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map(
         (card) => {
-          return card.card.card.itemCards;
+          return card?.card?.card?.itemCards;
         }
       );
     console.log(restMenuCards);
@@ -66,7 +66,7 @@ const RestaruntMenu = () => {
       .filter(Boolean)
       .flatMap((innerMenuCard) =>
         innerMenuCard.map((objList) => {
-          const menuList = objList.card.info;
+          const menuList = objList?.card?.info;
           return menuList;
         })
       );
@@ -87,18 +87,19 @@ const RestaruntMenu = () => {
           style={{ borderBottom: "1px dashed" }}
         >
           <div id="restaruntInfoContent">
-            <h5>{restaruntInfo.name}</h5>
+            <h5>{restaruntInfo?.name}</h5>
             <p
               className="text-secondary fw-light m-0"
               style={{ fontSize: "12px" }}
             >
-              {restaruntInfo.labels[2].message}
+              {restaruntInfo?.labels[2]?.message}
             </p>
             <p
               className="text-secondary fw-light fs-8 m-0"
               style={{ fontSize: "12px" }}
             >
-              {restaruntInfo.areaName}, {restaruntInfo.sla.lastMileTravelString}
+              {restaruntInfo?.areaName},{" "}
+              {restaruntInfo?.sla?.lastMileTravelString}
               <FiChevronDown className="mx-2 text-warning fw-bold" />
             </p>
 
@@ -106,13 +107,13 @@ const RestaruntMenu = () => {
               className="text-secondary my-2 fw-light"
               style={{ fontSize: "12px" }}
             >
-              {<IoBicycleOutline />} {restaruntInfo.feeDetails.message}
+              {<IoBicycleOutline />} {restaruntInfo?.feeDetails?.message}
             </p>
           </div>
 
           <div id="retaruntImage" className="w-50 d-flex justify-content-end">
             <img
-              src={IMG_CDN_URL + restaruntInfo.cloudinaryImageId}
+              src={IMG_CDN_URL + restaruntInfo?.cloudinaryImageId}
               className="w-50"
             />
           </div>
@@ -120,8 +121,8 @@ const RestaruntMenu = () => {
 
         <div id="time_money" className="d-flex">
           <p>
-            <IoTimerOutline /> {restaruntInfo.sla.slaString} |
-            {" " + restaruntInfo.costForTwoMessage}
+            <IoTimerOutline /> {restaruntInfo?.sla?.slaString} |
+            {" " + restaruntInfo?.costForTwoMessage}
           </p>
         </div>
       </div>
@@ -136,13 +137,13 @@ const RestaruntMenu = () => {
             >
               <div className="d-flex p-1 border justify-content-center align-items-baseline">
                 <img
-                  src={IMG_CDN_URL + discount.offerLogo}
+                  src={IMG_CDN_URL + discount?.offerLogo}
                   style={{ width: "8%", height: "10%" }}
                 ></img>
                 <p className="d-flex flex-column align-items-center">
                   {discount.header}
                   <span className="text-secondary" style={{ fontSize: "11px" }}>
-                    {discount.couponCode} | {discount.description}
+                    {discount?.couponCode} | {discount?.description}
                   </span>
                 </p>
               </div>
@@ -161,15 +162,15 @@ const RestaruntMenu = () => {
                 key={index}
               >
                 <div className="d-flex flex-column" id="menu-content">
-                  <h5>{menu.name}</h5>
-                  <p>₹{String(menu.price).slice(0, 3)}</p>
+                  <h5>{menu?.name}</h5>
+                  <p>₹{String(menu?.price).slice(0, 3)}</p>
                   <p className="text-secondary" style={{ fontSize: "12px" }}>
-                    {menu.description}
+                    {menu?.description}
                   </p>
                 </div>
 
                 <div className="w-20" id="menuImg">
-                  <img src={IMG_CDN_URL + menu.imageId} className="w-100" />
+                  <img src={IMG_CDN_URL + menu?.imageId} className="w-100" />
                 </div>
               </div>
             );

@@ -2,9 +2,12 @@
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RxPerson } from "react-icons/rx";
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState("🟢 Log-in");
+  // eslint-disable-next-line no-unused-vars
+  const [name, setName] = useState("Sign In");
 
   const userAuthentication = () => {
     return isLogin === "🟢 Log-in"
@@ -36,7 +39,7 @@ const Navbar = () => {
 
             <li className="nav-item">
               <Link className="nav-link" to="/contact">
-                Contact
+                <RxPerson style={{ fontSize: "20px" }} /> {name}
               </Link>
             </li>
 

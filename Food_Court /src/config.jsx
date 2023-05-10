@@ -7,3 +7,11 @@ export const FETCH_RESTARUNTS =
 
 export const FETCH_RESTARUNTS_DETAILS =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.098385&lng=79.068965&restaurantId=";
+
+export const PERSON_DETAILS = {
+  info: {
+    name: "Karan meghe",
+    contact: 7066990058,
+    email: "karanmeghe@icloud.com",
+  },
+};

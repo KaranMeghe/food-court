@@ -1,6 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 const Contact = () => {
-  return <h1>Contact us</h1>;
+  return (
+    <div className="mt-5">
+      <h3>Login</h3>
+      <p>Or Create an Account</p>
+    </div>
+  );
 };
 
 export default Contact;

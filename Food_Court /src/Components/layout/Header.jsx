@@ -24,7 +24,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div id="navbarSupportedContent" className="w-25">
+        <div id="navbarSupportedContent" className="w-35">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">

@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import food3d from "../../assets/images/Image-login.jpeg";
 import SignIn from "../Forms/SignIn";
+import SignUp from "../Forms/SignUp";
 import { useState } from "react";
 /* eslint-disable react/react-in-jsx-scope */
 const Contact = () => {
@@ -43,7 +44,8 @@ const Contact = () => {
           />
         </div>
       </div>
-      <SignIn />
+
+      {loginStatus === "Login" ? <SignIn /> : <SignUp />}
     </div>
   );
 };

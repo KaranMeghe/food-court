@@ -9,7 +9,7 @@ const Navbar = () => {
   // eslint-disable-next-line no-unused-vars
   const [name, setName] = useState("Sign In");
 
-  const userAuthentication = () => {
+  const userLoginStatus = () => {
     return isLogin === "🟢 Log-in"
       ? setIsLogin("🔴 Log-out")
       : setIsLogin("🟢 Log-in");
@@ -50,7 +50,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-items">
-              <Link className="nav-link" onClick={userAuthentication}>
+              <Link className="nav-link" onClick={userLoginStatus}>
                 {isLogin}
               </Link>
             </li>

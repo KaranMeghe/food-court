@@ -15,6 +15,8 @@ const SignUp = () => {
     useFormik({
       initialValues: {
         number: "",
+        username: "",
+        email: "",
       },
       validationSchema: signInSchema,
       onSubmit,

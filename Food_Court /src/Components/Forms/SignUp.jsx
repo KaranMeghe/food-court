@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { signInSchema } from "../../Schemas";
+import { signUpSchema } from "../../Schemas";
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 const SignUp = () => {
@@ -18,7 +18,7 @@ const SignUp = () => {
         username: "",
         email: "",
       },
-      validationSchema: signInSchema,
+      validationSchema: signUpSchema,
       onSubmit,
     });
 

@@ -55,6 +55,7 @@ const SignUp = () => {
           style={{
             width: " 100%",
             border: "1px solid #ccc",
+            borderTop: "none",
             padding: "10px",
           }}
         />
@@ -72,6 +73,7 @@ const SignUp = () => {
           style={{
             width: " 100%",
             border: "1px solid #ccc",
+            borderTop: "none",
             padding: "10px",
           }}
         />

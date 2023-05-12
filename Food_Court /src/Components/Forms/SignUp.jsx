@@ -39,25 +39,41 @@ const SignUp = () => {
             padding: "10px",
           }}
         />
+        {errors.number && touched.number && <p>{errors.number}</p>}
         <input
           type="text"
+          id="username"
+          name="username"
           placeholder="Name"
+          onChange={handleChange}
+          value={values.username}
+          className={
+            errors.username && touched.username ? "border border-danger" : ""
+          }
           style={{
             width: " 100%",
             border: "1px solid #ccc",
             padding: "10px",
           }}
         />
+        {errors.username && touched.username && <p>{errors.username}</p>}
         <input
           type="email"
+          id="email"
+          name="email"
           placeholder="Email"
+          onChange={handleChange}
+          value={values.email}
+          className={
+            errors.email && touched.email ? "border border-danger" : ""
+          }
           style={{
             width: " 100%",
             border: "1px solid #ccc",
             padding: "10px",
           }}
         />
-        {errors.number && touched.number && <p>{errors.number}</p>}
+        {errors.email && touched.email && <p>{errors.email}</p>}
         <button
           className="w-100 p-2 border mt-2"
           style={{ backgroundColor: "#fc8019", color: "#fff" }}

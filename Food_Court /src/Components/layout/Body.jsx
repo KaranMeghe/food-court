@@ -68,9 +68,9 @@ const Body = () => {
     <main>
       <div
         className="container-fluid d-flex justify-content-center"
-        style={{ marginTop: "3%" }}
+        style={{ marginTop: "7%" }}
       >
-        <form className="d-flex w-50 m-3" onSubmit={handleForm}>
+        <form className="d-flex w-50 " onSubmit={handleForm}>
           <input
             className="form-control me-2"
             type="text"

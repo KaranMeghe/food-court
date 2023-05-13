@@ -27,7 +27,7 @@ const Contact = () => {
     <div className="mx-5">
       <div className="d-flex w-25" style={{ marginTop: "8%" }}>
         <div className="d-flex flex-column w-50">
-          <h3>{loginStatus}</h3>
+          <h3 style={{ color: "#212529" }}>{loginStatus}</h3>
           <p style={{ fontSize: "12px", cursor: "pointer" }}>
             Or{" "}
             <span onClick={toogleLoginStatus} style={{ color: "#fc8019" }}>

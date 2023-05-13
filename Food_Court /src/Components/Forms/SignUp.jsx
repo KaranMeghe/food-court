@@ -81,10 +81,11 @@ const SignUp = () => {
         <button
           className="w-100 p-2 border mt-2"
           style={{ backgroundColor: "#fc8019", color: "#fff" }}
+          //#fc8019
           disabled={isSubmitting}
           type="submit"
         >
-          Login
+          Continue
         </button>
       </form>
       <p style={{ fontSize: "12px" }} className="w-25 mt-2">

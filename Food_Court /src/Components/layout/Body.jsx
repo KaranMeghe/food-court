@@ -5,7 +5,7 @@ import RestaruntCard from "../restarunt cards/RestaruntCard";
 import axios from "axios";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 import { Link } from "react-router-dom";
-// import { Router } from "react-router-dom";
+import { filterRestarunt } from "../utils/helper";
 
 const Body = () => {
   const [allRestarants, setAllRestarants] = useState([]);
@@ -31,15 +31,6 @@ const Body = () => {
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
-  };
-
-  const filterRestarunt = (searchInput, restarants) => {
-    const filterRestaruntName = restarants.filter((restarant) => {
-      return restarant.data.name
-        .toLowerCase()
-        .includes(searchInput.toLowerCase());
-    });
-    return filterRestaruntName;
   };
 
   // Early Return

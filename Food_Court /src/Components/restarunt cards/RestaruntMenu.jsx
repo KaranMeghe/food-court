@@ -1,80 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { FETCH_RESTARUNTS_DETAILS, IMG_CDN_URL } from "../../config";
+import { IMG_CDN_URL } from "../../config";
 import { FiChevronDown } from "react-icons/fi";
 import { IoBicycleOutline, IoTimerOutline } from "react-icons/io5";
 import { ShimmerTable } from "react-shimmer-effects-18";
+import {
+  useRestaruntInfo,
+  useRestaruntDiscount,
+  useGetRestaruntMenu,
+} from "../utils/useRestaruntMenuData";
 
 const RestaruntMenu = () => {
   // This is How to Read Dynamic URL Params
   const { restId } = useParams();
 
-  const [restaruntInfo, setRestaruntInfo] = useState(null);
-  const [restaruntMenu, setRestaruntMenu] = useState(null);
-  const [discountInfo, setDiscountInfo] = useState(null);
-
-  console.log(restaruntInfo);
-  console.log(restaruntMenu);
-
-  useEffect(() => {
-    getRestaruntInfo();
-  }, []);
-
-  useEffect(() => {
-    getRestaruntMenu();
-  }, []);
-
-  useEffect(() => {
-    getDiscountInfo();
-  }, []);
-
-  const getRestaruntInfo = async () => {
-    const restData = await axios.get(FETCH_RESTARUNTS_DETAILS + restId);
-    setRestaruntInfo(restData?.data?.data?.cards[0]?.card?.card?.info);
-    return restaruntInfo;
-  };
-
-  const getDiscountInfo = async () => {
-    const discountInformation = await axios.get(
-      FETCH_RESTARUNTS_DETAILS + restId
-    );
-    setDiscountInfo(
-      discountInformation?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers.map(
-        (offer) => offer.info
-      )
-    );
-    console.log(discountInfo);
-    return discountInfo;
-  };
-
-  const getRestaruntMenu = async () => {
-    const restCards = await axios.get(FETCH_RESTARUNTS_DETAILS + restId);
-    console.log(restCards);
-
-    const restMenuCards =
-      restCards?.data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map(
-        (card) => {
-          return card?.card?.card?.itemCards;
-        }
-      );
-    console.log(restMenuCards);
-
-    const menuCardsList = restMenuCards
-      .filter(Boolean)
-      .flatMap((innerMenuCard) =>
-        innerMenuCard.map((objList) => {
-          const menuList = objList?.card?.info;
-          return menuList;
-        })
-      );
-
-    setRestaruntMenu(menuCardsList);
-    console.log(restaruntMenu);
-    return restaruntMenu;
-  };
+  const restaruntInfo = useRestaruntInfo(restId);
+  const discountInfo = useRestaruntDiscount(restId);
+  const restaruntMenu = useGetRestaruntMenu(restId);
 
   return !restaruntInfo || !restaruntMenu || !discountInfo ? (
     <ShimmerTable row={14} col={14} />

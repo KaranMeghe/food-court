@@ -27,11 +27,18 @@ const Body = () => {
     setSearchInput(e.target.value);
   };
 
+  function notValidSearch() {
+    if (filteredRestarants.length === 0 && restaurants.length === 0) {
+      // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
+      let errorMsg = `Oops!! Restaruants or dish not found`;
+      return errorMsg;
+    }
+  }
+
   // Early Return
   if (!restaurants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
 
   // If Offline
-
   if (!isOnline) {
     return (
       <h3 className="text-center my-5 pt-5">
@@ -39,14 +46,6 @@ const Body = () => {
         <ChromeDinoGame />
       </h3>
     );
-  }
-
-  function notValidSearch() {
-    if (filteredRestarants.length === 0 && restaurants.length === 0) {
-      // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
-      let errorMsg = `Oops!! Restaruants or dish not found`;
-      return errorMsg;
-    }
   }
 
   return restaurants.length === 0 ? (

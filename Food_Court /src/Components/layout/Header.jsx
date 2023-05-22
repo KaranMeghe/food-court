@@ -1,19 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { BsFillCartPlusFill } from "react-icons/bs";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxPerson } from "react-icons/rx";
+import useOnline from "../utils/useOnline";
+import { FcApproval, FcCancel } from "react-icons/fc";
 
 const Navbar = () => {
-  const [isLogin, setIsLogin] = useState("🟢 Log-in");
-  // eslint-disable-next-line no-unused-vars
-  const [name, setName] = useState("Sign In");
-
-  const userLoginStatus = () => {
-    return isLogin === "🟢 Log-in"
-      ? setIsLogin("🔴 Log-out")
-      : setIsLogin("🟢 Log-in");
-  };
+  const isOnline = useOnline();
 
   return (
     <header>
@@ -39,7 +32,7 @@ const Navbar = () => {
 
             <li className="nav-item">
               <Link className="nav-link" to="/contact">
-                <RxPerson style={{ fontSize: "20px" }} /> {name}
+                <RxPerson style={{ fontSize: "20px" }} /> Sign in
               </Link>
             </li>
 
@@ -50,8 +43,8 @@ const Navbar = () => {
             </li>
 
             <li className="nav-items">
-              <Link className="nav-link" onClick={userLoginStatus}>
-                {isLogin}
+              <Link className="nav-link" style={{ fontSize: "16px" }}>
+                {isOnline ? <FcApproval /> : <FcCancel />}
               </Link>
             </li>
           </ul>

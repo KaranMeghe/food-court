@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import RestaruntCard from "../restarunt cards/RestaruntCard";
-import ChromDynoGame from "react-chrome-dino";
+import ChromeDinoGame from "react-chrome-dino";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 import { Link } from "react-router-dom";
 import { filterRestarunt } from "../utils/helper";
@@ -9,12 +9,14 @@ import {
   useGetFilteredRestarunt,
   useGetRestarunts,
 } from "../utils/useGetRestarunts";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const restaurants = useGetRestarunts();
   const [filteredRestarants, setFilteredRestarants] = useGetFilteredRestarunt();
+  const isOnline = useOnline();
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -27,6 +29,17 @@ const Body = () => {
 
   // Early Return
   if (!restaurants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
+
+  // If Offline
+
+  if (!isOnline) {
+    return (
+      <h3 className="text-center my-5 pt-5">
+        🔴 You are OffLine, please check your internet Connection
+        <ChromeDinoGame />
+      </h3>
+    );
+  }
 
   function notValidSearch() {
     if (filteredRestarants.length === 0 && restaurants.length === 0) {

@@ -1,28 +1,20 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState, useEffect } from "react";
-import { FETCH_RESTARUNTS } from "../../config";
+import { useState } from "react";
 import RestaruntCard from "../restarunt cards/RestaruntCard";
-import axios from "axios";
+import ChromDynoGame from "react-chrome-dino";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 import { Link } from "react-router-dom";
 import { filterRestarunt } from "../utils/helper";
+import {
+  useGetFilteredRestarunt,
+  useGetRestarunts,
+} from "../utils/useGetRestarunts";
 
 const Body = () => {
-  const [allRestarants, setAllRestarants] = useState([]);
-  const [filteredRestarants, setFilteredRestarants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  useEffect(() => {
-    // Api Call
-    getRestarunts();
-  }, []);
-
-  const getRestarunts = async () => {
-    const data = await axios.get(FETCH_RESTARUNTS);
-    console.log(data);
-    setAllRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
-  };
+  const restaurants = useGetRestarunts();
+  const [filteredRestarants, setFilteredRestarants] = useGetFilteredRestarunt();
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -34,24 +26,17 @@ const Body = () => {
   };
 
   // Early Return
-  if (!allRestarants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
-
-  //   function notValidSearch() {
-  //     if (searchInput.length && filteredRestarants.length === 0) {
-  //       const errorMsg = `Enter valid Search ${searchInput} not found`;
-  //       return errorMsg;
-  //     }
-  //   }
+  if (!restaurants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
 
   function notValidSearch() {
-    if (filteredRestarants.length === 0) {
+    if (filteredRestarants.length === 0 && restaurants.length === 0) {
       // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
       let errorMsg = `Oops!! Restaruants or dish not found`;
       return errorMsg;
     }
   }
 
-  return allRestarants.length === 0 ? (
+  return restaurants.length === 0 ? (
     <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
       <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
     </div>
@@ -74,7 +59,7 @@ const Body = () => {
             className="btn btn-outline-secondary"
             onClick={() => {
               if (searchInput !== "") {
-                const data = filterRestarunt(searchInput, allRestarants);
+                const data = filterRestarunt(searchInput, restaurants);
                 setFilteredRestarants(data);
               }
             }}

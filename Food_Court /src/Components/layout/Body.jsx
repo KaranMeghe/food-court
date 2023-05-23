@@ -62,6 +62,8 @@ const Body = () => {
           <input
             className="form-control me-2"
             type="text"
+            name="search"
+            id="search"
             placeholder="Search"
             aria-label="Search"
             value={searchInput}

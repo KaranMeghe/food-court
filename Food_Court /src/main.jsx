@@ -1,13 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Help from "./Components/Pages/Help";
 import Error from "./Components/Pages/Error";
 import Contact from "./Components/Pages/Contact";
 import Cart from "./Components/Pages/Cart";
 import Body from "./Components/layout/Body";
 import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
+const Help = lazy(() => import("./Components/Pages/Help"));
 
 const appRouter = createBrowserRouter([
   {
@@ -21,7 +21,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <Help />,
+        element: (
+          <Suspense>
+            <Help />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",

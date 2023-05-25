@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-const About = () => {
+const Help = () => {
   return (
     <div className="mt-5">
-      <h1>Section help section </h1>
+      <h1>Section Help</h1>
     </div>
   );
 };
 
-export default About;
+export default Help;

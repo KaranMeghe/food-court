@@ -15,3 +15,5 @@ export const PERSON_DETAILS = {
     email: "karanmeghe@icloud.com",
   },
 };
+
+export const FETCH_FAQS = "https://www.swiggy.com/dapi/support/issues/faq?";

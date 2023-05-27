@@ -5,17 +5,21 @@ import ChromeDinoGame from "react-chrome-dino";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 import { Link } from "react-router-dom";
 import { filterRestarunt } from "../utils/helper";
-import {
-  useGetFilteredRestarunt,
-  useGetRestarunts,
-} from "../utils/useGetRestarunts";
+// import {
+//   useGetFilteredRestarunt,
+//   useGetRestarunts,
+// } from "../utils/useGetRestarunts";
 import useOnline from "../utils/useOnline";
+import { useGetRestarunts } from "../utils/useGetRestarunts";
 
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
 
-  const restaurants = useGetRestarunts();
-  const [filteredRestarants, setFilteredRestarants] = useGetFilteredRestarunt();
+  const [restaurants, filteredRestarants, setFilteredRestarants] =
+    useGetRestarunts();
+  // const [filteredRestarants, setFilteredRestarants] = useGetFilteredRestarunt();
+
+  // const restaurantsList = useGetRestarunts();
   const isOnline = useOnline();
 
   const handleForm = (e) => {
@@ -28,7 +32,7 @@ const Body = () => {
   };
 
   function notValidSearch() {
-    if (filteredRestarants.length === 0 && restaurants.length === 0) {
+    if (filteredRestarants.length === 0) {
       // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
       let errorMsg = `Oops!! Restaruants or dish not found`;
       return errorMsg;
@@ -55,10 +59,10 @@ const Body = () => {
   ) : (
     <main>
       <div
-        className="container-fluid d-flex justify-content-center"
-        style={{ marginTop: "7%" }}
+        className="container-fluid d-flex justify-content-center pt-5"
+        style={{ marginTop: "8%" }}
       >
-        <form className="d-flex w-50 " onSubmit={handleForm}>
+        <form className="d-flex" onSubmit={handleForm} style={{ width: "65%" }}>
           <input
             className="form-control me-2"
             type="text"

@@ -1,67 +1,45 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-import useGetFaqs from "../utils/UseGetFaqs";
+import { useState } from "react";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import bootstrap from "bootstrap/dist/js/bootstrap";
 
-const Faqs = () => {
-  const faqs = useGetFaqs();
-  console.log(faqs);
+const Faqs = ({ faq }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-  // eslint-disable-next-line react/react-in-jsx-scope
+  function toggleVisible() {
+    isVisible ? setIsVisible(false) : setIsVisible(true);
+  }
+
   return (
-    <>
-      {faqs.map((faq) => {
-        return (
-          <div className="accordion" id="accordionExample" key={faq?.id}>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="headingOne">
-                <button
-                  className="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  {faq?.title}
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                className="accordion-collapse collapse show"
-                aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body">
-                  <p className="mb-2">{faq?.description}</p>
-                  <a
-                    href={faq?.hyperLink}
-                    className="text-decoration-none text-dark"
-                  >
-                    {faq?.hyperLinkText}
-                  </a>
-                  <br />
-                  {faq?.options?.[0]?.type === "email" ? (
-                    <button className="my-2 bg-transparent border border-primary text-primary">
-                      SEND AN EMAIL
-                    </button>
-                  ) : null}
-                  <br />
-                  <p
-                    className="text-secondary fw-light"
-                    style={{ fontSize: "9px" }}
-                  >
-                    {faq?.options?.[0]?.waitTime}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <br />
+    <section id="faq-accordion" className="bg-white">
+      <div className="border border-secondary text-primary fw-light">
+        <div id="faqs" className="d-flex justify-content-between">
+          <h5 className="fw-light">{faq?.title}</h5>
+          {isVisible ? (
+            <GoChevronDown
+              className="fs-3 fw-lighter"
+              onClick={toggleVisible}
+            />
+          ) : (
+            <GoChevronUp className="fs-3 fw-lighter" onClick={toggleVisible} />
+          )}
+        </div>
+
+        {isVisible ? (
+          <div id="respond">
+            <p>{faq?.description}</p>
+            <a href={faq?.hyperLink}>{faq?.hyperLinkText}</a> <br />
+            {faq?.options[0]?.type === "email" ? (
+              <button>SEND AN EMAIL</button>
+            ) : null}
+            <p>{faq?.options[0]?.waitTime}</p>
           </div>
-        );
-      })}
-    </>
+        ) : null}
+      </div>
+    </section>
   );
 };
 

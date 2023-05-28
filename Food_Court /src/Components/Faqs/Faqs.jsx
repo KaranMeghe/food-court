@@ -14,28 +14,41 @@ const Faqs = ({ faq }) => {
   }
 
   return (
-    <section id="faq-accordion" className="bg-white">
-      <div className="border border-secondary text-primary fw-light">
+    <section id="faq-accordion" className="bg-white w-full">
+      <div className="border border-secondary border-top-0 text-primary fw-light p-2 w-75">
         <div id="faqs" className="d-flex justify-content-between">
           <h5 className="fw-light">{faq?.title}</h5>
           {isVisible ? (
+            <GoChevronUp className="fs-3 fw-lighter" onClick={toggleVisible} />
+          ) : (
             <GoChevronDown
               className="fs-3 fw-lighter"
               onClick={toggleVisible}
             />
-          ) : (
-            <GoChevronUp className="fs-3 fw-lighter" onClick={toggleVisible} />
           )}
         </div>
 
         {isVisible ? (
           <div id="respond">
-            <p>{faq?.description}</p>
-            <a href={faq?.hyperLink}>{faq?.hyperLinkText}</a> <br />
+            <p className="text-secondary">{faq?.description}</p>
+            <a
+              href={faq?.hyperLink}
+              className="text-decoration-none text-secondary hover-dark"
+            >
+              {faq?.hyperLinkText}
+            </a>
+            <br />
             {faq?.options[0]?.type === "email" ? (
-              <button>SEND AN EMAIL</button>
+              <button className="my-2 btn btn-outline-primary">
+                SEND AN EMAIL
+              </button>
             ) : null}
-            <p>{faq?.options[0]?.waitTime}</p>
+            <p
+              style={{ fontSize: "10px", fontWeight: "300" }}
+              className="text-secondary"
+            >
+              {faq?.options[0]?.waitTime}
+            </p>
           </div>
         ) : null}
       </div>

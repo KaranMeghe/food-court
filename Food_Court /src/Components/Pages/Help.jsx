@@ -13,7 +13,7 @@ const Help = () => {
         <p>Let&apos; s take a step ahead and help you better.</p>
       </div>
 
-      <div className="d-flex w-full">
+      <div className="d-flex justify-content-around ">
         <div className="w-100">
           {faqs.map((faq) => {
             console.log(faq);
@@ -23,7 +23,7 @@ const Help = () => {
           })}
         </div>
 
-        <div className="w-25 d-flex flex-column">
+        <div className="w-25 d-flex flex-column align-items-center">
           <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>

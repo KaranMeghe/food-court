@@ -1,6 +1,9 @@
 import Faqs from "../Faqs/Faqs";
 import useGetFaqs from "../utils/UseGetFaqs";
 // import PartnerOnboarding from "./PartnerOnboarding";
+import { Link } from "react-router-dom";
+// import PartnerOnboarding from "./PartnerOnboarding";
+// import PartnerOnboarding from "./PartnerOnboarding";
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 const Help = () => {
@@ -24,8 +27,8 @@ const Help = () => {
         </div>
 
         <div className="w-25 d-flex flex-column align-items-center">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
+          <Link to="partner-onboarding">PartnerOnboarding</Link>
+          <Link to="faqs">FAQs</Link>
           <a href="#">Link 3</a>
         </div>
       </div>

@@ -15,7 +15,7 @@ const Faqs = ({ faq }) => {
 
   return (
     <section id="faq-accordion" className="bg-white w-full">
-      <div className="border border-secondary border-top-0 text-primary fw-light p-2 w-100">
+      <div className="border border-secondary border-top-0 text-secondary fw-light p-2 w-100">
         <div id="faqs" className="d-flex justify-content-between">
           <h5 className="fw-light">{faq?.title}</h5>
           {isVisible ? (
@@ -39,7 +39,7 @@ const Faqs = ({ faq }) => {
             </a>
             <br />
             {faq?.options[0]?.type === "email" ? (
-              <button className="my-2 btn btn-outline-primary">
+              <button className="my-2 btn btn-outline-dark">
                 SEND AN EMAIL
               </button>
             ) : null}

@@ -2,16 +2,11 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from "react";
+import useIsVisible from "../utils/useIsVisible";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import bootstrap from "bootstrap/dist/js/bootstrap";
 
 const Faqs = ({ faq }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  function toggleVisible() {
-    isVisible ? setIsVisible(false) : setIsVisible(true);
-  }
+  const [isVisible, toggleVisible] = useIsVisible();
 
   return (
     <section id="faq-accordion" className="bg-white w-full">

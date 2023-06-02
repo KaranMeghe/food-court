@@ -9,17 +9,18 @@ const Faqs = ({ faq }) => {
   const [isVisible, toggleVisible] = useIsVisible();
 
   return (
-    <section id="faq-accordion" className="bg-white w-full">
+    <section
+      id="faq-accordion"
+      className="bg-white w-full"
+      onClick={toggleVisible}
+    >
       <div className="border border-secondary border-top-0 text-secondary fw-light p-2 w-100">
         <div id="faqs" className="d-flex justify-content-between">
           <h5 className="fw-light">{faq?.title}</h5>
           {isVisible ? (
-            <GoChevronUp className="fs-3 fw-lighter" onClick={toggleVisible} />
+            <GoChevronUp className="fs-3 fw-lighter" />
           ) : (
-            <GoChevronDown
-              className="fs-3 fw-lighter"
-              onClick={toggleVisible}
-            />
+            <GoChevronDown className="fs-3 fw-lighter" />
           )}
         </div>
 
@@ -34,7 +35,7 @@ const Faqs = ({ faq }) => {
             </a>
             <br />
             {faq?.options[0]?.type === "email" ? (
-              <button className="my-2 btn btn-outline-dark">
+              <button className="my-2 btn btn-outline-secondary">
                 SEND AN EMAIL
               </button>
             ) : null}

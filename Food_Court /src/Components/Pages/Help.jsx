@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const Help = () => {
   const faqs = useGetFaqs();
   console.log(faqs);
+
   return (
     <section id="help" className="bg-light border-bottom">
       <div id="heading_msg_container" className="pt-5">

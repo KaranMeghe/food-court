@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 const useIsVisible = () => {
   const [isVisible, setIsVisible] = useState(false);
 

@@ -1,15 +1,12 @@
-import Faqs from "../Faqs/Faqs";
-import useGetFaqs from "../utils/UseGetFaqs";
-// import PartnerOnboarding from "./PartnerOnboarding";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import Happy from "../../assets/images/Happy.png";
+import { useState } from "react";
+// import Faqs from "../Faqs/Faqs";
 // import PartnerOnboarding from "./PartnerOnboarding";
 // import PartnerOnboarding from "./PartnerOnboarding";
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 const Help = () => {
-  const faqs = useGetFaqs();
-  console.log(faqs);
-
   return (
     <section id="help" className="bg-light border-bottom">
       <div id="heading_msg_container" className="pt-5">
@@ -18,19 +15,11 @@ const Help = () => {
       </div>
 
       <div className="d-flex justify-content-around ">
-        <div className="w-100">
-          {faqs.map((faq) => {
-            console.log(faq);
-            return (
-              <Faqs key={faq.id} faq={faq} className="d-flex flex-column" />
-            );
-          })}
-        </div>
+        <Outlet />
 
         <div className="w-25 d-flex flex-column align-items-center">
           <Link to="partner-onboarding">PartnerOnboarding</Link>
           <Link to="faqs">FAQs</Link>
-          <a href="#">Link 3</a>
         </div>
       </div>
     </section>

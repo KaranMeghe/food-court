@@ -7,10 +7,11 @@ import Contact from "./Components/Pages/Contact";
 import Cart from "./Components/Pages/Cart";
 import Body from "./Components/layout/Body";
 import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
-// import Faqs from "./Components/Faqs/Faqs";
-import PartnerOnboarding from "./Components/Pages/PartnerOnboarding";
-import Faqs from "./Components/Faqs/Faqs";
-const Help = lazy(() => import("./Components/Pages/Help"));
+import { SupportFaqs } from "./Components/Pages/Support";
+import Help from "./Components/Pages/Help";
+const PartnerOnboarding = lazy(() =>
+  import("./Components/Pages/PartnerOnboarding")
+);
 
 const appRouter = createBrowserRouter([
   {
@@ -24,19 +25,20 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/help",
-        element: (
-          <Suspense>
-            <Help />
-          </Suspense>
-        ),
+        element: <Help />,
         children: [
           {
             path: "partner-onboarding",
-            element: <PartnerOnboarding />,
+            element: (
+              <Suspense>
+                <PartnerOnboarding />
+              </Suspense>
+            ),
           },
+
           {
             path: "faqs",
-            element: <Faqs />,
+            element: <SupportFaqs />,
           },
         ],
       },

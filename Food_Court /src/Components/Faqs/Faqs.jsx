@@ -4,6 +4,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import useIsVisible from "../utils/useIsVisible";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import useGetFaqs from "../utils/UseGetFaqs";
 
 const Faqs = ({ faq }) => {
   const [isVisible, toggleVisible] = useIsVisible();

@@ -9,9 +9,12 @@ import Body from "./Components/layout/Body";
 import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
 import { SupportFaqs } from "./Components/Pages/Support";
 import Help from "./Components/Pages/Help";
-const PartnerOnboarding = lazy(() =>
-  import("./Components/Pages/PartnerOnboarding")
-);
+
+// const PartnerOnboarding = lazy(() =>
+//   import("./Components/Pages/PartnerOnboarding")
+// );
+
+const SupportOnBoarding = lazy(() => import("./Components/Pages/Support"));
 
 const appRouter = createBrowserRouter([
   {
@@ -31,7 +34,7 @@ const appRouter = createBrowserRouter([
             path: "partner-onboarding",
             element: (
               <Suspense>
-                <PartnerOnboarding />
+                <SupportOnBoarding />
               </Suspense>
             ),
           },

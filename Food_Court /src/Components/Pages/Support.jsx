@@ -1,7 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Faqs from "../Faqs/Faqs";
 import useGetFaqs from "../utils/UseGetFaqs";
-// import PartnerOnboarding from "./PartnerOnboarding";
+import useGetPartnerOnboarding from "../utils/UseGetPartnerOnboarding";
+import PartnerOnboarding from "../Pages/PartnerOnboarding";
 
 export const SupportFaqs = () => {
   const faqs = useGetFaqs();
@@ -16,3 +17,22 @@ export const SupportFaqs = () => {
     </div>
   );
 };
+
+const SupportOnBoarding = () => {
+  const partnerOnboarding = useGetPartnerOnboarding();
+  return (
+    <div className="w-100">
+      {partnerOnboarding.map((partner) => {
+        return (
+          <PartnerOnboarding
+            key={partner.id}
+            partner={partner}
+            className="d-flex flex-column"
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+export default SupportOnBoarding;

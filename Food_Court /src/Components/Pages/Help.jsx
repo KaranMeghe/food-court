@@ -1,12 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Happy from "../../assets/images/Happy.png";
 
-// import Faqs from "../Faqs/Faqs";
-// import PartnerOnboarding from "./PartnerOnboarding";
-// import PartnerOnboarding from "./PartnerOnboarding";
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable react/react-in-jsx-scope */
 const Help = () => {
   const [isVisible, setIsVisible] = useState(true);
   return (

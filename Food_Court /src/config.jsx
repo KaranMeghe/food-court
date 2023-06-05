@@ -17,3 +17,6 @@ export const PERSON_DETAILS = {
 };
 
 export const FETCH_FAQS = "https://www.swiggy.com/dapi/support/issues/faq?";
+
+export const FETCH_PARTER_ONBOARDING =
+  "https://www.swiggy.com/dapi/support/issues/partner-onboarding?";

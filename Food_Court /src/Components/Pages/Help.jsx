@@ -15,7 +15,7 @@ const Help = () => {
       <div className="d-flex justify-content-around">
         {isVisible ? <img src={Happy} className="w-50" /> : null}
         <Outlet />
-        <div className="w-25 d-flex flex-column align-items-center">
+        <div className="w-25 d-flex flex-column align-items-center my-5">
           <Link
             to="partner-onboarding"
             className="text-decoration-none fs-4 my-2"

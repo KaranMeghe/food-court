@@ -30,6 +30,9 @@ const Help = () => {
           >
             FAQs
           </Link>
+          <Link to="legal" className="text-deocation-none fs-4">
+            Legal
+          </Link>
         </div>
       </div>
     </section>

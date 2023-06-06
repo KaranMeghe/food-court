@@ -20,3 +20,5 @@ export const FETCH_FAQS = "https://www.swiggy.com/dapi/support/issues/faq?";
 
 export const FETCH_PARTER_ONBOARDING =
   "https://www.swiggy.com/dapi/support/issues/partner-onboarding?";
+
+export const FETCH_LEGAL = "https://www.swiggy.com/dapi/support/issues/legal?";

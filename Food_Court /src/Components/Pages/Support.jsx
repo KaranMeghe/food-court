@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Faqs from "../Faqs/Faqs";
 import useGetFaqs from "../utils/UseGetFaqs";
-import useGetPartnerOnboarding from "../utils/UseGetPartnerOnboarding";
+import useGetPartnerOnboarding from "../utils/useGetPartnerOnboarding";
 import PartnerOnboarding from "../Pages/PartnerOnboarding";
 
 export const SupportFaqs = () => {

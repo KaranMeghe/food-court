@@ -10,7 +10,9 @@ import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
 import { SupportFaqs } from "./Components/Pages/Support";
 import Help from "./Components/Pages/Help";
 
-const SupportOnBoarding = lazy(() => import("./Components/Pages/Support"));
+const SupportOnBoarding = lazy(() =>
+  import("./Components/Pages/SupportOnBoarding")
+);
 const SupportLegal = lazy(() => import("./Components/Pages/SupportLegal"));
 // import SupportLegal from "./Components/Pages/SupportLegal";
 

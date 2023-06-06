@@ -10,6 +10,7 @@ export const SupportFaqs = () => {
 
   return (
     <div className="w-100">
+      <h2 className="my-2">Faqs</h2>
       {faqs.map((faq) => {
         console.log(faq);
         return <Faqs key={faq.id} faq={faq} className="d-flex flex-column" />;
@@ -22,6 +23,7 @@ const SupportOnBoarding = () => {
   const partnerOnboarding = useGetPartnerOnboarding();
   return (
     <div className="w-100">
+      <h2 className="my-2">Partner Onboarding</h2>
       {partnerOnboarding.map((partner) => {
         return (
           <PartnerOnboarding

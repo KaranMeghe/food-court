@@ -11,7 +11,6 @@ const useGetPartnerOnboarding = () => {
   const getPartnerOnboarding = async () => {
     const data = await axios.get(FETCH_PARTER_ONBOARDING);
     setPartner(data?.data?.data?.issues?.data);
-    console.log(partner);
   };
   return partner;
 };

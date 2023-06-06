@@ -18,19 +18,20 @@ const Help = () => {
         <div className="w-25 d-flex flex-column align-items-center">
           <Link
             to="partner-onboarding"
-            className="text-decoration-none fs-4 my-4"
+            className="text-decoration-none fs-4 my-2"
             onClick={() => setIsVisible(false)}
           >
             Partner Onboarding
           </Link>
           <Link
             to="faqs"
-            className="text-decoration-none fs-4"
+            className="text-decoration-none fs-4 my-2"
             onClick={() => setIsVisible(false)}
           >
             FAQs
           </Link>
-          <Link to="legal" className="text-deocation-none fs-4">
+
+          <Link to="legal" className="text-decoration-none fs-4">
             Legal
           </Link>
         </div>

@@ -10,11 +10,9 @@ import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
 import { SupportFaqs } from "./Components/Pages/Support";
 import Help from "./Components/Pages/Help";
 
-// const PartnerOnboarding = lazy(() =>
-//   import("./Components/Pages/PartnerOnboarding")
-// );
-
 const SupportOnBoarding = lazy(() => import("./Components/Pages/Support"));
+const SupportLegal = lazy(() => import("./Components/Pages/SupportLegal"));
+// import SupportLegal from "./Components/Pages/SupportLegal";
 
 const appRouter = createBrowserRouter([
   {
@@ -42,6 +40,15 @@ const appRouter = createBrowserRouter([
           {
             path: "faqs",
             element: <SupportFaqs />,
+          },
+
+          {
+            path: "legal",
+            element: (
+              <Suspense>
+                <SupportLegal />
+              </Suspense>
+            ),
           },
         ],
       },

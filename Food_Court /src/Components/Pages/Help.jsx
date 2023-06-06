@@ -6,7 +6,7 @@ import Happy from "../../assets/images/Happy.png";
 const Help = () => {
   const [isVisible, setIsVisible] = useState(true);
   return (
-    <section id="help" className="bg-light border-bottom">
+    <section id="help" className="bg-light border-bottom my-5 px-4">
       <div id="heading_msg_container" className="pt-5">
         <h2>Help & Support</h2>
         <p>Let&apos; s take a step ahead and help you better.</p>
@@ -15,7 +15,7 @@ const Help = () => {
       <div className="d-flex justify-content-around">
         {isVisible ? <img src={Happy} className="w-50" /> : null}
         <Outlet />
-        <div className="w-25 d-flex flex-column align-items-center">
+        <div className="w-25 d-flex flex-column align-items-center my-5">
           <Link
             to="partner-onboarding"
             className="text-decoration-none fs-4 my-2"

@@ -3,12 +3,15 @@
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/layout/Header";
 import { Outlet } from "react-router-dom";
+import { Provider } from "./context/user";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Provider>
+        <Navbar />
+        <Outlet />
+      </Provider>
     </>
   );
 }

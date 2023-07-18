@@ -2,9 +2,16 @@
 import food3d from "../../assets/images/Image-login.jpeg";
 import SignIn from "../Forms/SignIn";
 import SignUp from "../Forms/SignUp";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import userContext from "../../context/user";
 /* eslint-disable react/react-in-jsx-scope */
 const Contact = () => {
+  const { fetchUsers } = useContext(userContext);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   // eslint-disable-next-line no-unused-vars
   const [loginStatus, setIsLoginStatus] = useState("Login");
   const [loginStatusMessage, setIsLoginStatusMessage] =

@@ -1,12 +1,17 @@
 import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas";
+import { useContext } from "react";
+import userContext from "../../context/user";
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 const SignUp = () => {
+  const { createUser, setUsers, users } = useContext(userContext);
+
   // eslint-disable-next-line no-unused-vars
   const onSubmit = (values, actions) => {
     console.log(values);
     console.log(actions);
+    createUser(values.number, values.username, values.email);
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
   };

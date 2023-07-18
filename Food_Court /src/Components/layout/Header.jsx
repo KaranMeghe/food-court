@@ -6,13 +6,14 @@ import { RxPerson } from "react-icons/rx";
 import useOnline from "../utils/useOnline";
 import { FcApproval, FcCancel } from "react-icons/fc";
 import bootstrap from "bootstrap/dist/js/bootstrap";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import userContext from "../../context/user";
 
 const Navbar = () => {
   const isOnline = useOnline();
-  const [{ userName, email, contactNumber }] = useContext(userContext);
-  console.log("haha");
+  const { users, phoneNumber, userLoginName, setUserLoginName } =
+    useContext(userContext);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm fixed-top collapse">
@@ -55,7 +56,8 @@ const Navbar = () => {
 
                 <li className="nav-item">
                   <Link className="nav-link" to="/contact">
-                    <RxPerson style={{ fontSize: "20px" }} /> {userName}
+                    <RxPerson style={{ fontSize: "20px" }} />
+                    {userLoginName}
                   </Link>
                 </li>
 

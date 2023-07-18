@@ -1,13 +1,19 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import { useFormik } from "formik";
 import { signInSchema } from "../../Schemas";
+import { useContext } from "react";
+import userContext from "../../context/user";
+
 /* eslint-disable react/react-in-jsx-scope */
 const SignIn = () => {
+  const { loginUser } = useContext(userContext);
+
   // eslint-disable-next-line no-unused-vars
-  const onSubmit = (values, actions) => {
+  const onSubmit = async (values, actions) => {
     console.log(values);
     console.log(actions);
     // await new Promise((resolve) => setTimeout(resolve, 1000));
+    await loginUser(values.number);
     actions.resetForm();
   };
 

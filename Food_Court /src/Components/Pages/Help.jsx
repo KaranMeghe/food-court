@@ -31,7 +31,11 @@ const Help = () => {
             FAQs
           </Link>
 
-          <Link to="legal" className="text-decoration-none fs-4">
+          <Link
+            to="legal"
+            className="text-decoration-none fs-4"
+            onClick={() => setIsVisible(false)}
+          >
             Legal
           </Link>
         </div>

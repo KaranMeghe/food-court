@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext } from "react";
 import userContext from "../../context/user";
+import { Link } from "react-router-dom";
 
 const Greeting = () => {
   const { setDisplayGreetings, userSignUpName } = useContext(userContext);
@@ -12,14 +13,16 @@ const Greeting = () => {
           Congragulations {userSignUpName}, you have Successfully Signed Up, now
           login and enjoy your meals at your home 🍔
         </p>
-        <a
-          href="#"
-          className="btn"
-          style={{ backgroundColor: "#fc8019", color: "#fff" }}
-          onClick={() => setDisplayGreetings(false)}
-        >
-          Go to login
-        </a>
+
+        <Link to="login">
+          <button
+            className="btn"
+            style={{ backgroundColor: "#fc8019", color: "#fff" }}
+            onClick={() => setDisplayGreetings(false)}
+          >
+            Go to login
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import Body from "./Components/layout/Body";
 import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
 import { SupportFaqs } from "./Components/Pages/Support";
 import Help from "./Components/Pages/Help";
+import SignIn from "./Components/Forms/SignIn";
 
 const SupportOnBoarding = lazy(() =>
   import("./Components/Pages/SupportOnBoarding")
@@ -57,6 +58,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+        children: [
+          {
+            path: "login",
+            element: <SignIn />,
+          },
+        ],
       },
       {
         path: "/cart",

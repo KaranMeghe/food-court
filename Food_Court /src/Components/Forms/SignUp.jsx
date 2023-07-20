@@ -2,18 +2,28 @@ import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas";
 import { useContext } from "react";
 import userContext from "../../context/user";
+import Greeting from "./Greetings";
+
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 const SignUp = () => {
-  const { createUser, setUsers, users } = useContext(userContext);
+  const {
+    createUser,
+    signUpName,
+    userLoginName,
+    displayGreetings,
+    setDisplayGreetings,
+  } = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const onSubmit = (values, actions) => {
     console.log(values);
     console.log(actions);
     createUser(values.number, values.username, values.email);
+    signUpName(values.username);
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
+    setDisplayGreetings(true);
   };
 
   const { values, handleChange, isSubmitting, touched, handleSubmit, errors } =
@@ -96,6 +106,7 @@ const SignUp = () => {
       <p style={{ fontSize: "12px" }} className="w-25 mt-2">
         By creating an account, I accept the Terms & Conditions & Privacy Policy
       </p>
+      {displayGreetings ? <Greeting userName={userLoginName} /> : null}
     </div>
   );
 };

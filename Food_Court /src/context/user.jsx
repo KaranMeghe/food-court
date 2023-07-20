@@ -17,6 +17,8 @@ export const Provider = ({ children }) => {
 
   const [phoneNumber, setPhoneNumber] = useState();
   const [userLoginName, setUserLoginName] = useState("SignIn");
+  const [displayGreetings, setDisplayGreetings] = useState(false);
+  const [userSignUpName, setUserSignUpName] = useState();
 
   console.log(users);
   console.log(phoneNumber);
@@ -97,6 +99,15 @@ By using find, i can locate the user with the matching contactNumber and set the
     loginName();
   }, [phoneNumber]);
 
+  const signUpName = (userName) => {
+    console.log(userName);
+    return setUserSignUpName(userName);
+  };
+
+  // useEffect(() => {
+  //   signUpName();
+  // }, [userSignUpName]);
+
   // };
 
   const dataToShare = {
@@ -108,6 +119,10 @@ By using find, i can locate the user with the matching contactNumber and set the
     phoneNumber,
     setUserLoginName,
     userLoginName,
+    displayGreetings,
+    setDisplayGreetings,
+    signUpName,
+    userSignUpName,
   };
 
   return (

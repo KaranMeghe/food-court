@@ -3,7 +3,7 @@ import food3d from "../../assets/images/Image-login.jpeg";
 import SignIn from "../Forms/SignIn";
 import SignUp from "../Forms/SignUp";
 import { useState, useContext, useEffect } from "react";
-import userContext from "../../context/user";
+import userContext from "../../context/UserContextProvider";
 /* eslint-disable react/react-in-jsx-scope */
 const Contact = () => {
   const { fetchUsers } = useContext(userContext);

@@ -7,7 +7,7 @@ import useOnline from "../utils/useOnline";
 import { FcApproval, FcCancel } from "react-icons/fc";
 import bootstrap from "bootstrap/dist/js/bootstrap";
 import { useContext, useState } from "react";
-import userContext from "../../context/user";
+import userContext from "../../context/UserContextProvider";
 
 const Navbar = () => {
   const isOnline = useOnline();

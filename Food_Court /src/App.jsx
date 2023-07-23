@@ -3,16 +3,14 @@
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/layout/Header";
 import { Outlet } from "react-router-dom";
-import { Provider } from "./context/user";
+import { Provider as UserContextProvider } from "./context/UserContextProvider";
 
 function App() {
   return (
-    <>
-      <Provider>
-        <Navbar />
-        <Outlet />
-      </Provider>
-    </>
+    <UserContextProvider>
+      <Navbar />
+      <Outlet />
+    </UserContextProvider>
   );
 }
 

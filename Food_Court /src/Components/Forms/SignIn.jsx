@@ -2,7 +2,7 @@
 import { useFormik } from "formik";
 import { signInSchema } from "../../Schemas";
 import { useContext } from "react";
-import userContext from "../../context/user";
+import userContext from "../../context/UserContextProvider";
 
 /* eslint-disable react/react-in-jsx-scope */
 const SignIn = () => {

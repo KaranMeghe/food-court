@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext } from "react";
-import userContext from "../../context/user";
+import userContext from "../../context/UserContextProvider";
 import { Link } from "react-router-dom";
 
 const Greeting = () => {

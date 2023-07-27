@@ -6,6 +6,7 @@ import axios from "axios";
 export const useGetRestarunts = () => {
   const [allRestarants, setAllRestarants] = useState([]);
   const [filteredRestarunts, setFilteredRestarunts] = useState([]);
+  console.log(allRestarants);
 
   useEffect(() => {
     getRestarunts();
@@ -14,9 +15,15 @@ export const useGetRestarunts = () => {
   const getRestarunts = async () => {
     const data = await axios.get(FETCH_RESTARUNTS);
     console.log(data);
-    setAllRestarants(data?.data?.data?.cards[2]?.data?.data?.cards);
+    setAllRestarants(
+      data?.data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
 
-    setFilteredRestarunts(data?.data?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestarunts(
+      data?.data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
   return [allRestarants, filteredRestarunts, setFilteredRestarunts];
 };

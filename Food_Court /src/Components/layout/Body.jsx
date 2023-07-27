@@ -40,7 +40,10 @@ const Body = () => {
   }
 
   // Early Return
-  if (!restaurants) return <h1>Sorry Nothing for now, Comeback later.</h1>;
+  if (!restaurants)
+    return (
+      <h1 className="pt-5 mt-5">Sorry Nothing for now, Comeback later.</h1>
+    );
 
   // If Offline
   if (!isOnline) {
@@ -51,12 +54,7 @@ const Body = () => {
       </h3>
     );
   }
-
-  return restaurants.length === 0 ? (
-    <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
-      <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
-    </div>
-  ) : (
+  return (
     <main>
       <div
         className="container-fluid d-flex justify-content-center pt-5"
@@ -87,22 +85,28 @@ const Body = () => {
         </form>
       </div>
       <p className="p-2 text-danger text-center">{notValidSearch()}</p>
-
-      <div className="restaruntList d-flex flex-wrap justify-content-center">
-        {filteredRestarants &&
-          filteredRestarants.map((restarant) => {
-            return (
-              <Link
-                to={"/restarunt/" + restarant.data.id}
-                key={restarant.data.id}
-                className="text-decoration-none text-reset"
-              >
-                <RestaruntCard {...restarant.data} className="d-flex" />
-              </Link>
-            );
-          })}
-      </div>
+      {restaurants.length === 0 ? (
+        <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
+          <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
+        </div>
+      ) : (
+        <div className="restaruntList d-flex flex-wrap justify-content-center">
+          {filteredRestarants &&
+            filteredRestarants.map((restarant) => {
+              return (
+                <Link
+                  to={"/restarunt/" + restarant.info.id}
+                  key={restarant.info.id}
+                  className="text-decoration-none text-reset"
+                >
+                  <RestaruntCard {...restarant.info} className="d-flex" />
+                </Link>
+              );
+            })}
+        </div>
+      )}
     </main>
   );
 };
+
 export default Body;

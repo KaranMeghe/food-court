@@ -10,6 +10,8 @@ import {
   useRestaruntDiscount,
   useGetRestaruntMenu,
 } from "../utils/useRestaruntMenuData";
+import { addItem } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaruntMenu = () => {
   // This is How to Read Dynamic URL Params
@@ -18,6 +20,15 @@ const RestaruntMenu = () => {
   const restaruntInfo = useRestaruntInfo(restId);
   const discountInfo = useRestaruntDiscount(restId);
   const restaruntMenu = useGetRestaruntMenu(restId);
+  console.log(restaruntMenu);
+
+  // add items to cart
+
+  const dispatch = useDispatch();
+
+  const handleAddFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return !restaruntInfo || !restaruntMenu || !discountInfo ? (
     <ShimmerTable row={14} col={14} />
@@ -115,6 +126,12 @@ const RestaruntMenu = () => {
                 <div className="w-20" id="menuImg">
                   <img src={IMG_CDN_URL + menu?.imageId} className="w-100" />
                 </div>
+                <button
+                  className="btn btn-secondary px-8 py-1"
+                  onClick={() => handleAddFoodItem(menu)}
+                >
+                  +
+                </button>
               </div>
             );
           })}

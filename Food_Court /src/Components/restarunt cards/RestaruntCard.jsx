@@ -9,11 +9,14 @@ const RestaruntCard = ({
   cuisines,
   cloudinaryImageId,
   avgRating,
-  slaString,
-  costForTwoString,
+  sla,
+  costForTwo,
 }) => {
   return (
-    <div className="card mx-2 my-5" style={{ width: "18rem" }}>
+    <div
+      className="card mx-2 my-5"
+      style={{ maxWidth: "18rem", minHeight: "82%" }}
+    >
       <img
         src={IMG_CDN_URL + cloudinaryImageId}
         className="card-img-top"
@@ -39,8 +42,8 @@ const RestaruntCard = ({
             </div>
           )}
 
-          <p>{slaString} .</p>
-          <p>{costForTwoString}</p>
+          <p>{sla.slaString} .</p>
+          <p>{costForTwo}</p>
         </div>
       </div>
     </div>

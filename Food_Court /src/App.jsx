@@ -4,13 +4,16 @@ import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/layout/Header";
 import { Outlet } from "react-router-dom";
 import { Provider as UserContextProvider } from "./context/UserContextProvider";
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
 function App() {
   return (
-    <UserContextProvider>
-      <Navbar />
-      <Outlet />
-    </UserContextProvider>
+    <Provider store={store}>
+      <UserContextProvider>
+        <Navbar />
+        <Outlet />
+      </UserContextProvider>
+    </Provider>
   );
 }
 

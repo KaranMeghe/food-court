@@ -6,17 +6,21 @@ import { RxPerson } from "react-icons/rx";
 import useOnline from "../utils/useOnline";
 import { FcApproval, FcCancel } from "react-icons/fc";
 import bootstrap from "bootstrap/dist/js/bootstrap";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import userContext from "../../context/UserContextProvider";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import store from "../../redux/store";
 
 const Navbar = () => {
   const isOnline = useOnline();
-  const { users, phoneNumber, userLoginName, setUserLoginName } =
-    useContext(userContext);
+  const { userLoginName } = useContext(userContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm fixed-top collapse">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm fixed-top collapse mb-5">
         <div className="container-fluid">
           <div className="logo d-flex justify-content-between w-100">
             <Link to="/" className="text-decoration-none">
@@ -40,7 +44,7 @@ const Navbar = () => {
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
-              style={{ width: "111%" }}
+              style={{ width: "115%" }}
             >
               <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li className="nav-item">
@@ -64,6 +68,7 @@ const Navbar = () => {
                 <li className="nav-items">
                   <Link className="nav-link" to="/cart">
                     <BsFillCartPlusFill className="fs-4" />
+                    {cartItems.length}
                   </Link>
                 </li>
 

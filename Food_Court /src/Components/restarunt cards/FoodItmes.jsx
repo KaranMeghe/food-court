@@ -5,7 +5,7 @@
 import { IMG_CDN_URL } from "../../config";
 
 const FoodItemsInCart = ({ name, description, imageId, price }) => {
-  const dishPrice = (price / 100).toFixed(2);
+  const dishPrice = price / 100;
   return (
     <>
       <div className="card mb-3" style={{ maxWidth: "540px" }}>

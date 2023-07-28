@@ -86,7 +86,7 @@ const RestaruntMenu = () => {
           return (
             <div
               key={discount.offerIds}
-              className="my-3 rounded mx-1 w-20"
+              className="my-3 rounded mx-1 w-75"
               style={{}}
             >
               <div className="d-flex p-1 border justify-content-center align-items-baseline">
@@ -123,7 +123,7 @@ const RestaruntMenu = () => {
                   </p>
                 </div>
 
-                <div className="w-20" id="menuImg">
+                <div className="w-25" id="menuImg">
                   <img src={IMG_CDN_URL + menu?.imageId} className="w-100" />
                 </div>
                 <button

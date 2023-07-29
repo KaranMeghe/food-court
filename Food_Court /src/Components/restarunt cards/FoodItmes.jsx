@@ -3,9 +3,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import { IMG_CDN_URL } from "../../config";
-
-const FoodItemsInCart = ({ name, description, imageId, price }) => {
+import { useDispatch } from "react-redux";
+import { removeItem } from "../../redux/slices/cartSlice";
+const FoodItemsInCart = ({ name, description, imageId, price, id }) => {
   const dishPrice = price / 100;
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = () => {
+    dispatch(removeItem(id));
+  };
+
   return (
     <>
       <div className="card mb-3" style={{ maxWidth: "540px" }}>
@@ -26,6 +33,9 @@ const FoodItemsInCart = ({ name, description, imageId, price }) => {
               </p>
             </div>
           </div>
+          <button className="btn btn-secondary" onClick={handleRemoveItem}>
+            -
+          </button>
         </div>
       </div>
     </>

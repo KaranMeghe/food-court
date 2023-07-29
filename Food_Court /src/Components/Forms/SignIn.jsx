@@ -28,7 +28,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <form className="w-25 mt-5" onSubmit={handleSubmit}>
+      <form className="mt-5 w-25" onSubmit={handleSubmit}>
         <input
           type="number"
           className={

@@ -10,7 +10,7 @@ import {
   useRestaruntDiscount,
   useGetRestaruntMenu,
 } from "../utils/useRestaruntMenuData";
-import { addItem } from "../../redux/slices/cartSlice";
+import { addItem, removeItem } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const RestaruntMenu = () => {

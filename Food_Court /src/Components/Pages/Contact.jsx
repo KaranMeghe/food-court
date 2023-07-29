@@ -31,7 +31,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="mx-5 position-relative">
+    <div className="mx-5 w-100 position-relative">
       <div className="d-flex w-25" style={{ marginTop: "8%" }}>
         <div className="d-flex flex-column w-50">
           <h3 style={{ color: "#212529" }}>{loginStatus}</h3>

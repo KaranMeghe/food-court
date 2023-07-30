@@ -12,11 +12,19 @@ const Cart = () => {
   return (
     <div className="d-flex justify-content-around vh-100 align-items-center">
       <div className="mt-5 mx-5 py-5 d-flex flex-column align-items-center">
-        {cartItems.map((item) => {
-          return (
-            <FoodItemsInCart key={item.id} {...item} totalPrice={totalPrice} />
-          );
-        })}
+        {cartItems.length === 0 ? (
+          <p>Cart is Empty</p>
+        ) : (
+          cartItems.map((item) => {
+            return (
+              <FoodItemsInCart
+                key={item.id}
+                {...item}
+                totalPrice={totalPrice}
+              />
+            );
+          })
+        )}
       </div>
 
       <CartPrice totalPrice={totalPrice} />

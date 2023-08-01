@@ -31,24 +31,53 @@ const Contact = () => {
   };
 
   return (
-    <div className="mx-5 w-100 position-relative">
-      <div className="d-flex w-25" style={{ marginTop: "8%" }}>
-        <div className="d-flex flex-column w-50">
-          <h3 style={{ color: "#212529" }}>{loginStatus}</h3>
-          <p style={{ fontSize: "12px", cursor: "pointer" }}>
-            Or{" "}
-            <span onClick={toogleLoginStatus} style={{ color: "#fc8019" }}>
-              {loginStatusMessage}
-            </span>{" "}
-          </p>
-          <div className="border border-secondary w-20"></div>
-        </div>
-        <div className="w-50">
-          <img
-            className="w-50 h-100"
-            src={food3d}
-            style={{ borderRadius: "100%", marginLeft: "45%" }}
-          />
+    // <div className="mx-5 w-100 position-relative">
+    //   <div
+    //     className="d-flex flex-column flex-md-row w-25 align-items-center justify-content-center"
+    //     style={{ marginTop: "8%" }}
+    //   >
+    //     <div className="d-flex flex-column w-50">
+    //       <h3 style={{ color: "#212529" }}>{loginStatus}</h3>
+    //       <p style={{ fontSize: "12px", cursor: "pointer" }}>
+    //         Or{" "}
+    //         <span onClick={toogleLoginStatus} style={{ color: "#fc8019" }}>
+    //           {loginStatusMessage}
+    //         </span>{" "}
+    //       </p>
+    //       <div className="border border-secondary w-20"></div>
+    //     </div>
+    //     <div className="w-50">
+    //       <img
+    //         className="w-50 h-100"
+    //         src={food3d}
+    //         style={{ borderRadius: "100%", marginLeft: "45%" }}
+    //       />
+    //     </div>
+    //   </div>
+
+    //   {loginStatus === "Login" ? <SignIn /> : <SignUp />}
+    // </div>
+    <div className="mx-5 position-relative">
+      <div className="row mt-5 pt-5">
+        <div className="col-lg-3 col-sm-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
+          <div className=" d-flex flex-column ">
+            <h3 style={{ color: "#212529" }}>{loginStatus}</h3>
+            <p style={{ fontSize: "12px", cursor: "pointer" }}>
+              Or{" "}
+              <span onClick={toogleLoginStatus} style={{ color: "#fc8019" }}>
+                {loginStatusMessage}
+              </span>{" "}
+            </p>
+            <div className="border border-secondary w-20"></div>
+          </div>
+          <div className="col-lg-9 col-sm-12 d-flex justify-content-center">
+            <img
+              className="w-50 h-100"
+              src={food3d}
+              style={{ borderRadius: "100%" }}
+              alt="Food"
+            />
+          </div>
         </div>
       </div>
 

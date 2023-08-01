@@ -26,36 +26,74 @@ const SignIn = () => {
       onSubmit,
     });
 
+  // return (
+  //   <div>
+  //     <form className="mt-5 w-md-25 w-50" onSubmit={handleSubmit}>
+  //       <input
+  //         type="number"
+  //         className={
+  //           errors.number && touched.number ? "border border-danger" : ""
+  //         }
+  //         placeholder="Phone Number"
+  //         id="number"
+  //         value={values.number}
+  //         onChange={handleChange}
+  //         style={{
+  //           width: " 100%",
+  //           marginTop: "5%",
+  //           border: "1px solid #ccc",
+  //           padding: "10px",
+  //         }}
+  //       />
+  //       {errors.number && touched.number && <p>{errors.number}</p>}
+  //       <button
+  //         className="w-100 p-2 border mt-2"
+  //         style={{ backgroundColor: "#fc8019", color: "#fff" }}
+  //         disabled={isSubmitting}
+  //         type="submit"
+  //       >
+  //         Login
+  //       </button>
+  //     </form>
+  //     <p style={{ fontSize: "12px" }} className="w-25 mt-2">
+  //       By clicking on Login, I accept the Terms & Conditions & Privacy Policy
+  //     </p>
+  //   </div>
+  // );
   return (
     <div>
-      <form className="mt-5 w-25" onSubmit={handleSubmit}>
-        <input
-          type="number"
-          className={
-            errors.number && touched.number ? "border border-danger" : ""
-          }
-          placeholder="Phone Number"
-          id="number"
-          value={values.number}
-          onChange={handleChange}
-          style={{
-            width: " 100%",
-            marginTop: "5%",
-            border: "1px solid #ccc",
-            padding: "10px",
-          }}
-        />
-        {errors.number && touched.number && <p>{errors.number}</p>}
-        <button
-          className="w-100 p-2 border mt-2"
-          style={{ backgroundColor: "#fc8019", color: "#fff" }}
-          disabled={isSubmitting}
-          type="submit"
-        >
-          Login
-        </button>
+      <form className="mt-5" onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col-sm-6 col-md-3">
+            <input
+              type="number"
+              className={
+                errors.number && touched.number ? "border border-danger" : ""
+              }
+              placeholder="Phone Number"
+              id="number"
+              value={values.number}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                marginTop: "5%",
+                border: "1px solid #ccc",
+                padding: "10px",
+              }}
+            />
+            {errors.number && touched.number && <p>{errors.number}</p>}
+            <button
+              className="w-100 p-2 border mt-2"
+              style={{ backgroundColor: "#fc8019", color: "#fff" }}
+              disabled={isSubmitting}
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </div>
       </form>
-      <p style={{ fontSize: "12px" }} className="w-25 mt-2">
+      <p style={{ fontSize: "12px" }} className="w-75 mt-2">
         By clicking on Login, I accept the Terms & Conditions & Privacy Policy
       </p>
     </div>

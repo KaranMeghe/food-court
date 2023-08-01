@@ -16,12 +16,12 @@ export const useGetRestarunts = () => {
     const data = await axios.get(FETCH_RESTARUNTS);
     console.log(data);
     setAllRestarants(
-      data?.data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
 
     setFilteredRestarunts(
-      data?.data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };

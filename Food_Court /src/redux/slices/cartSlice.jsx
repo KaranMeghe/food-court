@@ -6,6 +6,7 @@ const cartSlice = createSlice({
     items: [],
   },
   reducers: {
+    // Mutatining state, directly modifying state
     addItem: (state, action) => {
       state.items.push(action.payload);
     },

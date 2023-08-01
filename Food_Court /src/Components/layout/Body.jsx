@@ -5,21 +5,16 @@ import ChromeDinoGame from "react-chrome-dino";
 import { ShimmerPostList } from "react-shimmer-effects-18";
 import { Link } from "react-router-dom";
 import { filterRestarunt } from "../utils/helper";
-// import {
-//   useGetFilteredRestarunt,
-//   useGetRestarunts,
-// } from "../utils/useGetRestarunts";
 import useOnline from "../utils/useOnline";
 import { useGetRestarunts } from "../utils/useGetRestarunts";
 
 const Body = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const [searchInput, setSearchInput] = useState("");
 
-  const [restaurants, filteredRestarants, setFilteredRestarants] =
+  const [allRestaurants, filteredRestarants, setFilteredRestarants] =
     useGetRestarunts();
-  // const [filteredRestarants, setFilteredRestarants] = useGetFilteredRestarunt();
 
-  // const restaurantsList = useGetRestarunts();
   const isOnline = useOnline();
 
   const handleForm = (e) => {
@@ -31,16 +26,25 @@ const Body = () => {
     setSearchInput(e.target.value);
   };
 
-  function notValidSearch() {
-    if (filteredRestarants.length === 0) {
-      // The function first checks whether the length of the search input is greater than zero (searchInput.length). If it is, it proceeds to the next condition, which checks whether the length of the filtered restaurants array is zero (filteredRestaurants.length === 0). If both of these conditions are true, it creates an error message string that includes the user's search input and returns it.
-      let errorMsg = `Oops!! Restaruants or dish not found`;
-      return errorMsg;
+  const notValidSearch = (searchInput, allRestaurants) => {
+    if (searchInput !== "") {
+      const filterName = filterRestarunt(searchInput, allRestaurants);
+      setFilteredRestarants(filterName);
+
+      if (filterName.length === 0) {
+        setErrorMessage(
+          `Sorry, we couldn't find any results for "${searchInput}"`
+        );
+      } else {
+        setErrorMessage(``);
+      }
+    } else {
+      setFilteredRestarants(allRestaurants);
     }
-  }
+  };
 
   // Early Return
-  if (!restaurants)
+  if (!allRestaurants)
     return (
       <h1 className="pt-5 mt-5">Sorry Nothing for now, Comeback later.</h1>
     );
@@ -73,19 +77,14 @@ const Body = () => {
           />
           <button
             className="btn btn-outline-secondary"
-            onClick={() => {
-              if (searchInput !== "") {
-                const data = filterRestarunt(searchInput, restaurants);
-                setFilteredRestarants(data);
-              }
-            }}
+            onClick={() => notValidSearch(searchInput, allRestaurants)}
           >
             Search
           </button>
         </form>
       </div>
-      <p className="p-2 text-danger text-center">{notValidSearch()}</p>
-      {restaurants.length === 0 ? (
+      <p className="p-2 text-danger text-center">{errorMessage}</p>
+      {allRestaurants.length === 0 ? (
         <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
           <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />
         </div>

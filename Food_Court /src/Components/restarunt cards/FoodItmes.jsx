@@ -7,9 +7,11 @@ import { useDispatch } from "react-redux";
 import { removeItem } from "../../redux/slices/cartSlice";
 const FoodItemsInCart = ({ name, description, imageId, price, id }) => {
   const dishPrice = price / 100;
+
   const dispatch = useDispatch();
 
   const handleRemoveItem = () => {
+    // dispatch an action
     dispatch(removeItem(id));
   };
 

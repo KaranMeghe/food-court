@@ -15,6 +15,7 @@ const Navbar = () => {
   const isOnline = useOnline();
   const { userLoginName } = useContext(userContext);
 
+  // Subscribing store by using a Selector
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
 

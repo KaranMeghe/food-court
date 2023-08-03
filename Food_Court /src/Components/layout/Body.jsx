@@ -46,7 +46,16 @@ const Body = () => {
   // Early Return
   if (!allRestaurants)
     return (
-      <h1 className="pt-5 mt-5">Sorry Nothing for now, Comeback later.</h1>
+      <>
+        <h1 className="pt-5 mt-5">Sorry Nothing for now, Comeback later.</h1>
+        <p>
+          <small>
+            Sometimes swiggy public api get modified behind the scene or get
+            some fetching issues in that case please try to refresh 2/3 times.
+            thank you.
+          </small>
+        </p>
+      </>
     );
 
   // If Offline

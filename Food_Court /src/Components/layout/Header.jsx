@@ -8,7 +8,9 @@ import { FcApproval, FcCancel } from "react-icons/fc";
 import bootstrap from "bootstrap/dist/js/bootstrap";
 import { useContext } from "react";
 import userContext from "../../context/UserContextProvider";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+// import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
+
 import store from "../../redux/store";
 
 const Navbar = () => {
@@ -25,7 +27,9 @@ const Navbar = () => {
         <div className="container-fluid">
           <div className="logo d-flex justify-content-between w-100">
             <Link to="/" className="text-decoration-none">
-              <h1 className="navbar-brand ">FOOD COURT</h1>
+              <h1 className="navbar-brand" data-testid="logo">
+                FOOD COURT
+              </h1>
             </Link>
 
             <button
@@ -66,7 +70,7 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                <li className="nav-items">
+                <li className="nav-items" data-testid="cart">
                   <Link className="nav-link" to="/cart">
                     <BsFillCartPlusFill className="fs-4" />
                     {cartItems.length}
@@ -74,7 +78,11 @@ const Navbar = () => {
                 </li>
 
                 <li className="nav-items">
-                  <Link className="nav-link" style={{ fontSize: "16px" }}>
+                  <Link
+                    className="nav-link"
+                    style={{ fontSize: "16px" }}
+                    data-testid="online-status"
+                  >
                     {isOnline ? <FcApproval /> : <FcCancel />}
                   </Link>
                 </li>

@@ -109,7 +109,7 @@ const SignUp = () => {
           </form>
         </div>
 
-        <p style={{ fontSize: "12px" }} className="w-25 mt-2">
+        <p style={{ fontSize: "12px" }} className="w-75 mt-2">
           By creating an account, I accept the Terms & Conditions & Privacy
           Policy
         </p>

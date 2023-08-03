@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-3 shadow-sm fixed-top collapse mb-5">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between align-items-center px-4 shadow-sm fixed-top collapse mb-5">
         <div className="container-fluid">
           <div className="logo d-flex justify-content-between w-100">
             <Link to="/" className="text-decoration-none">

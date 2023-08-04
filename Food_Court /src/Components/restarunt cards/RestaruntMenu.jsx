@@ -12,6 +12,7 @@ import {
 } from "../utils/useRestaruntMenuData";
 import { addItem, removeItem } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 
 const RestaruntMenu = () => {
   // This is How to Read Dynamic URL Params
@@ -20,7 +21,9 @@ const RestaruntMenu = () => {
   const restaruntInfo = useRestaruntInfo(restId);
   const discountInfo = useRestaruntDiscount(restId);
   const restaruntMenu = useGetRestaruntMenu(restId);
-  console.log(restaruntMenu);
+  const menuList = useGetRestaruntMenu(restId);
+
+  const [filteredMenu, setFilteredMenu] = useState([]); // "ALL", "VEG", or "NONVEG"
 
   // add items to cart
 
@@ -30,10 +33,38 @@ const RestaruntMenu = () => {
     dispatch(addItem(item));
   };
 
+  // Replace the handleVegItemMenu and handleNonVegItemMenu functions with a single function to filter menus
+  const handleFilterMenu = (type) => {
+    // Filter the menuList based on the selected type
+    let filteredList;
+    if (type === "VEG") {
+      filteredList = menuList.filter((menu) => {
+        return menu?.itemAttribute?.vegClassifier === "VEG";
+      });
+    } else if (type === "NONVEG") {
+      filteredList = menuList.filter((menu) => {
+        return menu?.itemAttribute?.vegClassifier === "NONVEG";
+      });
+    } else {
+      // If type is "ALL", show all items
+      filteredList = menuList;
+    }
+
+    setFilteredMenu(filteredList);
+  };
+
+  useEffect(() => {
+    // Set the initial filtered menu to be all items on the first render
+    if (menuList) {
+      setFilteredMenu(menuList);
+    }
+  }, [menuList]);
+
   return !restaruntInfo || !restaruntMenu || !discountInfo ? (
     <ShimmerTable row={14} col={14} />
   ) : (
     <>
+      {/* Restarunt Inforamtion */}
       <div className="d-flex flex-direction-column align-items-center my-5">
         <div
           id="restaruntInfo"
@@ -81,6 +112,7 @@ const RestaruntMenu = () => {
         </div>
       </div>
 
+      {/* Restarunt Discount Information */}
       <div className="d-flex flex-column flex-sm-column  flex-lg-row align-items-center justify-content-center mx-5">
         {discountInfo.map((discount) => {
           return (
@@ -106,9 +138,38 @@ const RestaruntMenu = () => {
         })}
       </div>
 
+      <div
+        className="btn-group mx-5"
+        role="group"
+        aria-label="Basic mixed styles example"
+      >
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={() => handleFilterMenu("VEG")}
+        >
+          Veg
+        </button>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => handleFilterMenu("NONVEG")}
+        >
+          Non-Veg
+        </button>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => handleFilterMenu("ALL")}
+        >
+          All
+        </button>
+      </div>
+
+      {/* Restarunt Menu list and information  */}
       <div className="d-flex justify-content-center">
         <div className="d-flex flex-column align-items-center">
-          {restaruntMenu.map((menu, index) => {
+          {filteredMenu.map((menu, index) => {
             return (
               <div
                 className="d-flex justify-content-between p-2 my-3 border rounded w-75"

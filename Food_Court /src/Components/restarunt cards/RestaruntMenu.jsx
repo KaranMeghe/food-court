@@ -89,7 +89,7 @@ const RestaruntMenu = () => {
               className="my-3 rounded mx-1 w-75"
               style={{}}
             >
-              <div className="d-flex p-1 border justify-content-center align-items-baseline">
+              <div className="d-flex p-1 border justify-content-center align-items-baseline w-100">
                 <img
                   src={IMG_CDN_URL + discount?.offerLogo}
                   style={{ width: "8%", height: "10%" }}
@@ -115,23 +115,29 @@ const RestaruntMenu = () => {
                 id="menuList"
                 key={index}
               >
-                <div className="d-flex flex-column" id="menu-content">
+                <div
+                  className="d-flex flex-column justify-content-center"
+                  id="menu-content"
+                >
                   <h5>{menu?.name}</h5>
                   <p>₹{String(menu?.price).slice(0, 3)}</p>
                   <p className="text-secondary" style={{ fontSize: "12px" }}>
                     {menu?.description}
                   </p>
+
+                  <div id="button-container">
+                    <button
+                      className="btn btn-secondary  "
+                      onClick={() => handleAddFoodItem(menu)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
 
                 <div className="w-25" id="menuImg">
                   <img src={IMG_CDN_URL + menu?.imageId} className="w-100" />
                 </div>
-                <button
-                  className="btn btn-secondary px-8 py-1"
-                  onClick={() => handleAddFoodItem(menu)}
-                >
-                  +
-                </button>
               </div>
             );
           })}

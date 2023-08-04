@@ -1,0 +1,3 @@
+[build]
+  base = "Food_Court"
+  publish = "Food_Court/dist"

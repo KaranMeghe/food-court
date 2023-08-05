@@ -2,7 +2,7 @@
 import Faqs from "../Faqs/Faqs";
 import useGetFaqs from "../utils/UseGetFaqs";
 
-export const SupportFaqs = () => {
+const SupportFaqs = () => {
   const faqs = useGetFaqs();
   console.log(faqs);
 
@@ -16,3 +16,5 @@ export const SupportFaqs = () => {
     </div>
   );
 };
+
+export default SupportFaqs;

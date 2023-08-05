@@ -7,7 +7,6 @@ import Contact from "./Components/Pages/Contact";
 import Cart from "./Components/Pages/Cart";
 import Body from "./Components/layout/Body";
 import RestaruntMenu from "./Components/restarunt cards/RestaruntMenu";
-import { SupportFaqs } from "./Components/Pages/Support";
 import Help from "./Components/Pages/Help";
 import SignIn from "./Components/Forms/SignIn";
 
@@ -15,7 +14,8 @@ const SupportOnBoarding = lazy(() =>
   import("./Components/Pages/SupportOnBoarding")
 );
 const SupportLegal = lazy(() => import("./Components/Pages/SupportLegal"));
-// import SupportLegal from "./Components/Pages/SupportLegal";
+
+const SupportFaqs = lazy(() => import("./Components/Pages/Support"));
 
 const appRouter = createBrowserRouter([
   {
@@ -42,7 +42,11 @@ const appRouter = createBrowserRouter([
 
           {
             path: "faqs",
-            element: <SupportFaqs />,
+            element: (
+              <Suspense>
+                <SupportFaqs />
+              </Suspense>
+            ),
           },
 
           {

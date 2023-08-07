@@ -61,11 +61,13 @@ const Body = () => {
   // If Offline
   if (!isOnline) {
     return (
-      <div className="vh-100">
-        <h3 className="text-center my-5 pt-5">
-          🔴 You are OffLine, please check your internet Connection
-          <ChromeDinoGame />
-        </h3>
+      <div className="vh-100 d-flex flex-column justify-content-center">
+        <div className="h-75">
+          <h3 className="text-center my-5 pt-5">
+            🔴 You are OffLine, please check your internet Connection
+            <ChromeDinoGame />
+          </h3>
+        </div>
       </div>
     );
   }
@@ -95,6 +97,7 @@ const Body = () => {
         </form>
       </div>
       <p className="p-2 text-danger text-center">{errorMessage}</p>
+
       {allRestaurants.length === 0 ? (
         <div className="mx-auto m-5" style={{ width: "78.125rem" }}>
           <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={2} gap={30} />

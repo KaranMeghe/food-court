@@ -1,0 +1,26 @@
+# Create a User
+POST http://127.0.0.1:3002/users  HTTP/1.1
+Content-Type: application/json
+
+{
+    "userName" : "Daredevil",
+    "contactNumber": "7066990085",
+    "email": "karanmeghe87@gmail.com"
+}
+
+####
+# Update a User
+
+PUT http://127.0.0.1:3002/users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userName": "Karan Meghe",
+    "contactNumber": 7066990085,
+    "email": "karanmeghe87@gmail.com"
+}
+
+###
+#Get users 
+GET http://127.0.0.1:3002/users HTTP/1.1
+Content-Type: application/json

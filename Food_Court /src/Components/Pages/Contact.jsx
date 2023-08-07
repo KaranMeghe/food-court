@@ -57,7 +57,7 @@ const Contact = () => {
 
     //   {loginStatus === "Login" ? <SignIn /> : <SignUp />}
     // </div>
-    <div className="mx-5 position-relative">
+    <div className="mx-5 position-relative vh-100 ">
       <div className="row mt-5 pt-5">
         <div className="col-lg-3 col-sm-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <div className=" d-flex flex-column ">

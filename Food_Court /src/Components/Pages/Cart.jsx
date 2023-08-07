@@ -10,7 +10,7 @@ const Cart = () => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
   return (
-    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center my-5 py-5 overflow-auto">
+    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center my-5 overflow-auto min-vh-100">
       <div className="mt-5 mx-5 py-5 d-flex flex-column align-items-center">
         {cartItems.length === 0 ? (
           <p>Cart is Empty</p>

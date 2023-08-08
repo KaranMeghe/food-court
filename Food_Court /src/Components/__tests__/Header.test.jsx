@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Navbar from "../layout/Header";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
 import { Provider as UserContextProvider } from "../../context/UserContextProvider";
 import { StaticRouter } from "react-router-dom/server";
+import "@testing-library/jest-dom";
 
 test("Logo should be load on rendering Headers", () => {
   // Load Header
@@ -18,6 +19,10 @@ test("Logo should be load on rendering Headers", () => {
       </Provider>
     </StaticRouter>
   );
+
+  const logoHeading = screen.getByRole("heading");
+
+  expect(logoHeading).toBeInTheDocument();
 });
 
 test("cartItems.length should be 0 in initial render", () => {
